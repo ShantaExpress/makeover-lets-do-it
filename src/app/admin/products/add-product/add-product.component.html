@@ -1,0 +1,192 @@
+<div class="container">
+  <br/>
+  <div class="alert alert-danger alert-dismissible fade show" *ngIf="error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <i class="fas fa-exclamation-triangle"></i>{{error}}
+  </div>
+  <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{CRUDSuccess}}
+  </div>
+  <h2>Add Product</h2>
+  <form novalidate #addProductForm="ngForm">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="name"
+        placeholder="Enter Product Name" name="name" [(ngModel)]="product.name" required/>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label for="identifier">Product identifier</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="identifier"
+        placeholder="Enter Product identifier" name="identifier" [(ngModel)]="product.identifier"/>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label for="isEnabled">Product isEnabled</label>
+      <div class="input-group">        
+        <select class="form-control" id="isEnabled" name="isEnabled"
+          [(ngModel)]="product.isEnabled" required>
+          <option value="">--Is Enabled??--</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label for="url">Product url</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="url"
+        placeholder="Enter Product url" name="url" 
+        [(ngModel)]="product.url" required/>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label>Price Quantity and discount</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-rupee-sign"></i></span>
+        </div>        
+        <input type="number" class="form-control" id="basePrice"
+        placeholder="Price" name="basePrice" 
+        [(ngModel)]="product.basePrice" required/>
+        <input type="number" class="form-control" id="quantity"
+        placeholder="Quantity" name="quantity" 
+        [(ngModel)]="product.quantity" required/>
+        <input type="number" class="form-control" id="discount"
+        placeholder="Discount percent" name="discount" 
+        [(ngModel)]="product.discount" required/>
+        <div class="input-group-append" >
+          <span class="input-group-text"><b>%</b></span>
+        </div>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label for="description">Product description</label>
+      <div class="input-group">
+        <textarea class="form-control" id="description"
+        placeholder="Enter Product description" name="description" 
+        [(ngModel)]="product.description" required></textarea>
+      </div> 
+    </div>
+    <div class="form-group">
+      <label for="specification">Product specification</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="newSpecification"
+        placeholder="Enter new Specification" name="newSpecification" 
+        [(ngModel)]="newSpecification"/>
+        <div class="input-group-append" >
+          <button class="btn btn-primary" (click)="addNewSpecification(newSpecification)">
+            <i class="fas fa-clipboard-list"></i> Add</button>
+        </div>
+      </div>
+      <div *ngFor="let spec of product.specification;let i = index">
+        <div class="card">
+          <div class="card-header"><b>{{spec.name}} </b>
+            <i class="floatR pointer fas fa-trash-alt text-danger" (click)="deleteSpecification(i)"></i>
+          </div>
+          <div class="card-body">
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-indent"></i></span>
+              </div>        
+              <input type="text" class="form-control" id="specName" [(ngModel)]="spec.specProp"
+              placeholder="Write Specification Property" name="specName"/>
+              <input type="text" class="form-control" id="specValue" [(ngModel)]="spec.specPropValue"
+              placeholder="Write specifictaion property value" name="specValue"/>
+              <div class="input-group-append" >
+                <button class="btn btn-success" 
+                (click)="addNewSpecificationProperty(spec)">
+                    <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <span *ngFor="let specProp of spec.list;let j = index" class="specPropHolder">
+              <label class="specProp">{{specProp.prop}}</label> : 
+              <strong>{{specProp.propValue}}</strong>
+              <i class="fas fa-times text-danger pointer close" (click)="deleteSpecificationProperty(spec.list,j)"></i>
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="form-group">
+      <label for="manufacturer">Product manufacturer</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="manufacturer"
+        placeholder="Enter Product manufacturer" name="manufacturer" 
+        [(ngModel)]="product.manufacturer" required/>
+      </div> 
+    </div>
+
+
+    <div class="form-group">
+      <label for="seller">Product seller</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="seller"
+        placeholder="Enter Product seller" name="seller" 
+        [(ngModel)]="product.seller" required/>
+      </div> 
+    </div>
+
+
+    <div class="form-group">
+      <label for="image">Product image</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="image"
+        placeholder="Enter Product image" name="image" 
+        [(ngModel)]="product.image_id" required/>
+      </div> 
+    </div>
+  
+        
+    <div class="form-group">
+      <label for="image">Product sectionalCategory</label>      
+      <div class="input-group">
+        <select class="form-control" id="category.category_id" name="category.category_id"
+          [(ngModel)]="product.category_id" required>
+          <option value="">--Choose Category--</option>
+          <option *ngFor="let x of categories" 
+            [value]="x._id" >{{x.name}}
+          </option>
+        </select>
+        <select class="form-control" id="category.subCategory_id" name="category.subCategory_id"
+          [(ngModel)]="product.subCategory_id" required>
+          <option value="">--Choose SubCategory--</option>
+          <option *ngFor="let x of subCategories | filterSubCategory:product.category_id" 
+            [value]="x._id" >{{x.name}}
+          </option>
+        </select>
+        <select class="form-control" id="category.sectionalCategory_id" name="category.sectionalCategory_id"
+          [(ngModel)]="product.sectionalCategory_id" required>
+          <option value="">--Choose SectionalCategory--</option>
+          <option *ngFor="let x of sectionalCategories | filterSectionalCategory:product.subCategory_id" 
+            [value]="x._id" >{{x.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+      
+    <div class="form-group">
+      <label for="image">Product brand</label>
+      <select class="form-control" id="category.brand_id" name="category.brand_id"
+        [(ngModel)]="product.brand_id" required>
+        <option value="">--Choose brand--</option>
+        <option *ngFor="let x of brands | filterBrand:product.subCategory_id" 
+          [value]="x._id" >{{x.name}}
+        </option>
+      </select>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="addProduct(addProductForm)" 
+    [disabled]="!addProductForm.form.valid">Add</button>
+    <button type="button" class="btn btn-secondary"
+     (click)="resetProduct(addProductForm)">Reset</button>
+  </form>
+</div>

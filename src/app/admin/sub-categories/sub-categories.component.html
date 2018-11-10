@@ -1,0 +1,55 @@
+<div class="container">
+  <br/>
+  <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{CRUDSuccess}}
+  </div>
+  
+  <div class="alert alert-danger alert-dismissible" *ngIf="error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div>{{error}}</div>
+  </div>
+
+  <form novalidate #subCategoryAddForm="ngForm">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-puzzle-piece"></i></span>
+        </div>
+        <input type="text" class="form-control" id="name"
+        placeholder="Enter Sub-Category Name" name="name" [(ngModel)]="newSubCategory.name" required/>
+        <input type="text" class="form-control" id="identifier"
+        placeholder="Identifier" name="identifier" [(ngModel)]="newSubCategory.identifier" required/>
+        
+        <select class="form-control" id="isEnabled" name="isEnabled"
+          [(ngModel)]="newSubCategory.isEnabled" required>
+          <option value="">--Is Enabled??--</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+        
+        <input type="text" class="form-control" id="url"
+        placeholder="URL" name="url" [(ngModel)]="newSubCategory.url" required/>
+        
+        
+        <select class="form-control" id="category.name" name="category.name"
+          [(ngModel)]="newSubCategory.category_id" required>
+          <option value="">--Choose Category--</option>
+          <option *ngFor="let x of categories" 
+            [value]="x._id" >{{x.name}}
+          </option>
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" 
+            (click)="addSubCategory(subCategoryAddForm)" 
+            [disabled]="!subCategoryAddForm.form.valid"><span><i class="fas fa-plus"></i></span> Add</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+  <hr/>  
+  <app-grid-table [parentApis]="['category','user']" [configuration]="configuration"
+   api="subCategory"></app-grid-table>
+
+</div>

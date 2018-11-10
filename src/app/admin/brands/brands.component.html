@@ -1,0 +1,67 @@
+<div class="container">
+  <br/>
+  <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{CRUDSuccess}}
+  </div>
+  
+  <div class="alert alert-danger alert-dismissible" *ngIf="error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div>{{error}}</div>
+  </div>
+
+  <form novalidate #BrandAddForm="ngForm">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-puzzle-piece"></i></span>
+        </div>
+        <input type="text" class="form-control" id="name"
+        placeholder="Enter Brand Name" name="name" [(ngModel)]="newBrand.name" required/>
+        <input type="text" class="form-control" id="identifier"
+        placeholder="Identifier" name="identifier" [(ngModel)]="newBrand.identifier" required/>
+        
+        <select class="form-control" id="isEnabled" name="isEnabled"
+          [(ngModel)]="newBrand.isEnabled" required>
+          <option value="">--Is Enabled??--</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+        
+        <input type="text" class="form-control" id="url"
+        placeholder="URL" name="url" [(ngModel)]="newBrand.url" required/>
+                
+        <div class="nav-item dropdown form-control">
+          <span class="dropdown-toggle" data-toggle="dropdown">
+            <ng-container *ngIf="!newBrand.subCategories.length;else show_selected_subCat">Select Sub Categories</ng-container>
+            <ng-template #show_selected_subCat>
+              <span title="{{getSubCategories()}}">{{getSubCategoriesShort()}}</span>
+            </ng-template>
+          </span>
+          <div class="dropdown-menu">
+            <div *ngFor="let x of subCategories" id="{{x._id}}" >
+              <label class="pad-lr-10 pointer">
+                  <input class="hidden" type="checkbox" [(ngModel)]="x.checked" name="subCategory" 
+                  (change)="setSubCategories()"/>
+                  <i class="far fa-square" *ngIf="!x.checked"></i>
+                  <i class="fas fa-square text-success" *ngIf="x.checked"></i>
+                  {{x.name}}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" 
+            (click)="addBrand(BrandAddForm)" 
+            [disabled]="!BrandAddForm.form.valid"><span><i class="fas fa-plus"></i></span> Add</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+  
+  <hr/>  
+  <app-grid-table [parentApis]="['subCategory']" [configuration]="configuration"
+   api="brand"></app-grid-table>
+
+</div>

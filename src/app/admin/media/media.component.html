@@ -1,0 +1,61 @@
+<div class="container">
+    <br/>
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <i class="fas fa-exclamation-triangle"></i>{{error}}
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{CRUDSuccess}}
+    </div>
+    <h2>Add Media</h2>
+    
+    <div>
+      <label class="custom-file-upload">
+          <input name="fileUpload" id="fileUpload" type="file" 
+            ng2FileSelect [uploader]="uploader"/>
+          <i class="fas fa-file-image"></i> 
+          <i class="vertical-seperator"></i>
+          Upload
+      </label>
+
+      <br/>
+
+      <div *ngFor="let item of uploader.queue">
+        <div class="col-sm-12">{{item.file.name}}</div>
+        <div class="progress mb-3" *ngIf="item.progress">
+          <div class="progress-bar progress-bar-striped"
+          [ngStyle]="{'width':item.progress+'%'}" 
+          [ngClass]="{'bg-success':(item.progress===100),'progress-bar-animated':(item.progress<100)}">
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary col-12" (click)="item.upload()">Upload</button>
+      </div>
+
+      <div *ngIf="files && files.length;else noFiles" class="row">
+        <ng-container *ngFor="let file of files">
+            <div class="col-3">
+                <div class="mediaBlock">   
+                  <img src="http://localhost:3000/api/media/download/{{file.uploadfileName}}" alt="{{file.filename}}" />                 
+                    <div class="lds-ripple">
+                      <div></div>
+                      <div></div>
+                    </div>
+                </div>
+                <div *ngIf="!file.isImage">
+                  {{file.originalfileName}}
+                </div>
+                <button class="btn btn-danger btn-block mt-4" (click)="deleteFile(file._id)">Delete</button>
+                <button class="btn btn-primary btn-block mt-4" (click)="downloadFile(file.uploadfileName)">Download</button>
+                
+            </div>
+        </ng-container>
+      </div>
+      <ng-template #noFiles>
+        
+        <div class="alert alert-info">
+            <span>No files present...</span>
+          </div>
+      </ng-template>
+    </div>
+</div>

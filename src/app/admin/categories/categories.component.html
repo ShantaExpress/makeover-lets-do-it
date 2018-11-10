@@ -1,0 +1,44 @@
+<div class="container">
+  <br/>
+  <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{CRUDSuccess}}
+  </div>
+  
+  <div class="alert alert-danger alert-dismissible" *ngIf="error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div>{{error}}</div>
+  </div>
+  
+  <form novalidate #categoryAddForm="ngForm">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fab fa-buromobelexperte"></i></span>
+        </div>
+        <input type="text" class="form-control" id="name"
+        placeholder="Enter Category Name" name="name" [(ngModel)]="newCategory.name" required/>
+        <input type="text" class="form-control" id="identifier"
+        placeholder="Identifier" name="identifier" [(ngModel)]="newCategory.identifier" required/>
+        
+        <select class="form-control" id="isEnabled" name="isEnabled"
+          [(ngModel)]="newCategory.isEnabled" required>
+          <option value="">--Is Enabled??--</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+
+        <input type="text" class="form-control" id="url"
+        placeholder="URL" name="url" [(ngModel)]="newCategory.url" required/>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addCategory(categoryAddForm)" 
+            [disabled]="!categoryAddForm.form.valid">
+            <span><i class="fas fa-plus"></i></span> Add
+          </button>
+        </div>
+      </div> 
+    </div>    
+  </form>
+  <hr/>
+  <app-grid-table [configuration]="configuration" api="category"></app-grid-table>
+</div>

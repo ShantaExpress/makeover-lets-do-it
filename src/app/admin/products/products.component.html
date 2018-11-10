@@ -1,0 +1,19 @@
+<br/>
+<div class="container">
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <i class="fas fa-box"></i> Product List
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  routerLink="/admin/products/add" routerLinkActive="active" >
+      <i class="fas fa-box-open"></i>Add Product</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link not-active" routerLink="/admin/products/edit" routerLinkActive="active" >
+      <i class="fas fa-box-open"></i>Edit Product</a>
+  </li>
+</ul>
+</div>
+<router-outlet></router-outlet>

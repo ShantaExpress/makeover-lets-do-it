@@ -1,0 +1,55 @@
+<div class="container">
+  <br/>
+  <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{CRUDSuccess}}
+  </div>
+  
+  <div class="alert alert-danger alert-dismissible" *ngIf="error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div>{{error}}</div>
+  </div>
+
+  <form novalidate #sectionalCategoryAddForm="ngForm">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-puzzle-piece"></i></span>
+        </div>
+        <input type="text" class="form-control" id="name"
+        placeholder="Enter Sectional-Category Name" name="name" [(ngModel)]="newSectionalCategory.name" required/>
+        <input type="text" class="form-control" id="identifier"
+        placeholder="Identifier" name="identifier" [(ngModel)]="newSectionalCategory.identifier" required/>
+        
+        <select class="form-control" id="isEnabled" name="isEnabled"
+          [(ngModel)]="newSectionalCategory.isEnabled" required>
+          <option value="">--Is Enabled??--</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+        
+        <input type="text" class="form-control" id="url"
+        placeholder="URL" name="url" [(ngModel)]="newSectionalCategory.url" required/>
+        
+        
+        <select class="form-control" id="subcategory.name" name="subcategory.name"
+          [(ngModel)]="newSectionalCategory.subCategory_id" required>
+          <option value="">--Choose sub-Category--</option>
+          <option *ngFor="let x of subCategories" 
+            [value]="x._id" >{{x.name}}
+          </option>
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" 
+            (click)="addSectionalCategory(sectionalCategoryAddForm)" 
+            [disabled]="!sectionalCategoryAddForm.form.valid"><span><i class="fas fa-plus"></i></span> Add</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+  <hr/>  
+  <app-grid-table [parentApis]="['subCategory','user']" [configuration]="configuration"
+   api="sectionalCategory"></app-grid-table>
+
+</div>
