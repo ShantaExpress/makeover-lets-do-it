@@ -83,7 +83,7 @@ export class MediaComponent implements OnInit {
     this.adminService.removeItem('media/files',id).subscribe(
       data=>{
         console.log('file removed:', data);
-        // this.getFiles();
+        this.getFiles();
         this.CRUDSuccess="File removed successfully";
         setTimeout(function(){
           self.CRUDSuccess = "";
