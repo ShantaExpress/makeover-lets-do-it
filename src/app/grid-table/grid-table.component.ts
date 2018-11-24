@@ -14,7 +14,8 @@ export class GridTableComponent implements OnInit {
   parentData:any={};
   loading:Boolean=false;
   noRecords:Boolean=false;
-  recordToRemove:any;
+  recordsToRemove:any = [];
+  selectAll:Boolean = false;
   crudSuccess:any;
   crudError:any;
   backupData:any[];
@@ -54,6 +55,14 @@ export class GridTableComponent implements OnInit {
 
   resetGridData(){
     this.gridData = JSON.parse(JSON.stringify(this.backupData));
+    this.addSelection(false);
+  }
+
+  addSelection(flag: Boolean){
+    console.log('in addSelection :', flag);
+    for(let i in this.gridData){
+      this.gridData[i]['selected'] = flag;
+    }
   }
 
   getAllData(){
@@ -65,6 +74,7 @@ export class GridTableComponent implements OnInit {
         setTimeout(function(){
           self.loading = false;
           self.gridData = data['data'];
+          self.addSelection(false);
           self.backupData = JSON.parse(JSON.stringify(self.gridData));
           console.log('over here we got : ' , data['data']);
           if(!data['data'].length){
@@ -93,15 +103,46 @@ export class GridTableComponent implements OnInit {
     return current;
   }
 
-  deleteItem(item){
-    this.recordToRemove = item;
+  deleteSelectedData(){
+    this.removeCancel();
+    for( let i in this.gridData ) {
+      if(this.gridData[i].selected) {
+        this.recordsToRemove.push(this.gridData[i]._id);
+      }
+    }
   }
+  
+  selectedItemsAvailable() {
+    let count = 0;
+    for( let i in this.gridData ){
+      if(this.gridData[i].selected){
+        count++;
+      }
+    }
+    return count;
+  }
+
+  deleteItem(item){
+    this.removeCancel();
+    this.recordsToRemove.push(item._id);
+  }
+
+  individualSelection(flag:Boolean){
+    this.selectAll = this.selectedItemsAvailable() == this.gridData.length;
+  }
+
+  removeCancel(){
+    this.recordsToRemove = [];
+  }
+
   removeProceed(){
     let self = this;
-    this.admin.removeItem(this.api,this.recordToRemove._id).subscribe(
+
+    this.admin.removeItem(this.api,this.recordsToRemove.join(',')).subscribe(
       data=>{
-        this.crudSuccess = this.api.toUpperCase()+" removed successfully!!";
-        this.getAllData();
+        self.crudSuccess = self.api.toUpperCase()+" removed successfully!!";
+        self.getAllData();
+        self.selectAll = false;
         setTimeout(function(){
           self.crudSuccess='';
         },6000);

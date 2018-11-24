@@ -125,8 +125,9 @@ export class AdminServiceService {
         return this.http.put(this.url+api+'/'+obj._id,body,this.gethttpHeaders(true));
     }
 
-    removeItem(api:String,id){
-        return this.http.delete(this.url+api+'/'+id,this.gethttpHeaders(true));
+    removeItem(api:String,ids){
+        console.log('ids : ', ids);
+        return this.http.delete(this.url+api+'/'+ids,this.gethttpHeaders(true));
     }
 
     addItem(api:String,obj){
