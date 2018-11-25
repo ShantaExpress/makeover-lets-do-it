@@ -50,6 +50,13 @@ export class MediaComponent implements OnInit {
     this.getFiles();
   }
 
+  copyToClipboard(fileName) {
+
+    var copyText = document.getElementById(fileName);
+    copyText['select']();
+    document.execCommand("copy");
+  }
+
   getURL(){
     return 'http://localhost:3000/api/media/?token='+localStorage.getItem('token');
   }

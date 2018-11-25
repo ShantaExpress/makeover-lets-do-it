@@ -43,10 +43,14 @@
                     </div>
                 </div>
                 <div *ngIf="!file.isImage">
-                  {{file.originalfileName}}
+                  <input id="{{file.uploadfileName}}" class="copy-input" type="text" [(ngModel)]="file.uploadfileName"/>
                 </div>
-                <button class="btn btn-danger btn-block mt-4" (click)="deleteFile(file._id)">Delete</button>
-                <button class="btn btn-primary btn-block mt-4" (click)="downloadFile(file.uploadfileName)">Download</button>
+                Copy filename: <i title="{{file.uploadfileName}}" (click)="copyToClipboard(file.uploadfileName)" class="far fa-copy text-primary pointer"></i>
+                
+                <span class="floatR">
+                  <i class="fas fa-download text-success pointer" (click)="downloadFile(file.uploadfileName)"></i>&nbsp;
+                  <i class="fas fa-trash text-danger pointer" (click)="deleteFile(file._id)"></i>
+                </span>
                 
             </div>
         </ng-container>
