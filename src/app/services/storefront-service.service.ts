@@ -8,11 +8,12 @@ import { catchError, retry } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class StorefrontService {
   
   loggedUser = new EventEmitter<User>();
   selfUser:User;
   url: any = 'http://localhost:3000/api/';
+  publicUrl: any = this.url + 'public/';
   //headers:Headers = new Headers({'Content-Type': 'application/json'});
   httpOptions:any;
   constructor(private http: HttpClient, private router: Router) { }
@@ -42,7 +43,7 @@ export class AdminService {
     const body = JSON.stringify(user);
     console.log('body: ' , body);
     console.log('url : ' , this.url+"user/signin");
-    return this.http.post(this.url+"user/admin-signin",body,this.gethttpHeaders(false));
+    return this.http.post(this.url+"user/customer-signin",body,this.gethttpHeaders(false));
   }
   
   getLoggedInUser(){      
@@ -58,7 +59,7 @@ export class AdminService {
     signout(){
         this.clearToken();
         this.loggedUser.emit(undefined);
-        this.router.navigateByUrl('/admin/login');
+        this.router.navigateByUrl('/customer/login');
     }
     checkValidLoggedIn(){
         var currentURL = window.location.pathname;
@@ -80,43 +81,10 @@ export class AdminService {
         }
     }
     
-    addCategory(categoryName){        
-        console.log('categoryName : ' , categoryName);
-        const body = JSON.stringify({name:categoryName});
-        console.log('body: ' , body);
-        console.log('url : ' , this.url+"category");
-        return this.http.post(this.url+"category",body,this.gethttpHeaders(true));
-    }
-    updateCategory(category){
-        
-        const body = JSON.stringify({name:category.name});
-        console.log('body: ' , body);
-        console.log('url : ' , this.url+"category");
-        return this.http.put(this.url+"category/"+category._id,body,this.gethttpHeaders(true));
-    }
-    getAllCategories(){
-        return this.http.get(this.url+"category",this.gethttpHeaders(true));
-    }
-    removeCategory(id){
-        return this.http.delete(this.url+'category/remove/'+id,this.gethttpHeaders(true));
-    }
-
-    addSubCategory(subCategory){
-        console.log('subCategory : ' , subCategory);
-        const body = JSON.stringify(subCategory);
-        console.log('body: ' , body);
-        console.log('url : ' , this.url+"subCategory");
-        return this.http.post(this.url+"subCategory",body,this.gethttpHeaders(true));
-    }
-    getAllSubCategories(){
-        return this.http.get(this.url+"subCategory",this.gethttpHeaders(true));
-    }
-
-
     //generic Api's service
 
-    getAllPrivateData(api:String){
-        return this.http.get(this.url+api,this.gethttpHeaders(true));
+    getAllPublicData(api:String){
+        return this.http.get(this.publicUrl+'get/'+api,this.gethttpHeaders(false));
     }
 
     updateItem(api:String,obj){                

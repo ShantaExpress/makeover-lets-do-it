@@ -1,7 +1,7 @@
 import { Component, OnInit, Directive,ElementRef,Renderer } from '@angular/core';
 import { NgModel,NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
-import { AdminServiceService } from '../../services/admin-service.service';
+import { AdminService } from '../../services/admin-service.service';
 import { LoginUser, User } from "../../models/user.model";
 
 import { Title } from '@angular/platform-browser';
@@ -16,7 +16,7 @@ export class AdminLoginComponent implements OnInit {
   passwordType: String = 'password';
   error:Boolean = false;
   errorMessage:String = '';
-  constructor(private adminService: AdminServiceService,private router:Router,private title:Title) { }
+  constructor(private adminService: AdminService,private router:Router,private title:Title) { }
 
   ngOnInit() {
     console.log('in AdminLoginComponent');

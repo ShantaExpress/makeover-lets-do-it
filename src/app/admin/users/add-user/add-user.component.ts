@@ -1,7 +1,7 @@
 import { Component, OnInit, Directive,ElementRef,Renderer } from '@angular/core';
 import { NgModel,NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
-import { AdminServiceService } from '../../../services/admin-service.service';
+import { AdminService } from '../../../services/admin-service.service';
 import { LoginUser, User } from "../../../models/user.model";
 //import { setTimeout } from 'timers';
 
@@ -21,7 +21,7 @@ export class AddUserComponent implements OnInit {
   error:String='';
   timer=7000;
 
-  constructor(private adminService:AdminServiceService,private title:Title) {
+  constructor(private adminService:AdminService,private title:Title) {
 
   }
 

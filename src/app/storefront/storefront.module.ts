@@ -10,11 +10,17 @@ import { StoreBaseComponent } from './store-base/store-base.component';
 
 import {StoreRouting} from './storefront.routing';
 
+// import {AdminModule} from '../admin/admin.module';
+
+import { AdminService } from '../services/admin-service.service';
+import { StorefrontService } from '../services/storefront-service.service';
+
 @NgModule({
   imports: [
     CommonModule,
     StoreRouting
   ],
-  declarations: [HeaderComponent, FooterComponent, HomeComponent, NotFoundComponent, CartComponent, StoreBaseComponent]
+  declarations: [HeaderComponent, FooterComponent, HomeComponent, NotFoundComponent, CartComponent, StoreBaseComponent],
+  providers:[AdminService, StorefrontService]
 })
 export class StorefrontModule { }

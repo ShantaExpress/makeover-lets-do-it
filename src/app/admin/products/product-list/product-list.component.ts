@@ -1,7 +1,7 @@
 import { Component, OnInit, Directive,ElementRef,Renderer } from '@angular/core';
 import { NgModel,NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
-import { AdminServiceService } from '../../../services/admin-service.service';
+import { AdminService } from '../../../services/admin-service.service';
 
 import {GridDataType} from '../../../models/grid.model';
 import { Title } from '@angular/platform-browser';
@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit {
     visible:true,editable:false,parentApi:'brand',parentField:'name'},
   ];
 
-  constructor(private adminService:AdminServiceService,private title:Title) { }
+  constructor(private adminService:AdminService,private title:Title) { }
 
   ngOnInit() {
     this.title.setTitle('Admin: Products');

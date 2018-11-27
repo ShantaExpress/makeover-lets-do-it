@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminServiceService } from '../../services/admin-service.service';
+import { AdminService } from '../../services/admin-service.service';
 import { Router } from "@angular/router";
 import { User } from "../../models/user.model";
 
@@ -10,7 +10,7 @@ import { User } from "../../models/user.model";
 })
 export class HeaderComponent implements OnInit {
   user:User;
-  constructor(private adminService: AdminServiceService,private router:Router) { }
+  constructor(private adminService: AdminService,private router:Router) { }
   
   ngOnInit() {
     this.adminService.loggedUser.subscribe((user:User)=>{

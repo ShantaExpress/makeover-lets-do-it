@@ -20,7 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { MediaComponent } from './media/media.component';
 import { BrandsComponent } from './brands/brands.component';
-import { AdminServiceService } from '../services/admin-service.service';
+import { AdminService } from '../services/admin-service.service';
 import { AdminGuard } from '../guards/admin.guard';
 import { EmailValidator } from '../directives/custom.directive';
 import { AdminBaseComponent } from './admin-base/admin-base.component';
@@ -74,6 +74,6 @@ import { SubCategoryFilterPipe,SectionalCategoryFilterPipe,BrandFilterPipe } fro
     BrandFilterPipe,
     FileSelectDirective
   ],
-  providers:[AdminServiceService,AdminGuard]
+  providers:[AdminService,AdminGuard]
 })
 export class AdminModule { }

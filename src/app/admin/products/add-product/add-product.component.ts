@@ -1,7 +1,7 @@
 import { Component, OnInit, Directive,ElementRef,Renderer,ViewChild } from '@angular/core';
 import { NgModel,NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
-import { AdminServiceService } from '../../../services/admin-service.service';
+import { AdminService } from '../../../services/admin-service.service';
 import { Title } from '@angular/platform-browser';
 import { GridTableComponent } from '../../../grid-table/grid-table.component';
 
@@ -39,7 +39,7 @@ export class AddProductComponent implements OnInit {
 
   @ViewChild(GridTableComponent)
   private grid: GridTableComponent;
-  constructor(private adminService: AdminServiceService,private router:Router,private title:Title) {
+  constructor(private adminService: AdminService,private router:Router,private title:Title) {
     this.title.setTitle('Admin: Add Product');
   }
 

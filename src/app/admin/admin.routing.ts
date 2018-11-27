@@ -22,7 +22,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
-import { AdminServiceService } from '../services/admin-service.service';
+import { AdminService } from '../services/admin-service.service';
 import { SectionalCategoryComponent } from './sectional-category/sectional-category.component';
 import { AdminGuard } from '../guards/admin.guard';
 

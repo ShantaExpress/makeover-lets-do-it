@@ -5,9 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navb">
-      <ul class="navbar-nav mr-auto">
-      </ul>
+    <div class="collapse navbar-collapse flex-end" id="navb">
       <ul class="navbar-nav second-nav">
         <li class="nav-item grow-max">
             <form class="form-inline">      
@@ -19,17 +17,8 @@
                 </div>      
               </form>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Men</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Women</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Electronics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="javascript:void(0)">Disabled</a>
+        <li class="nav-item" *ngFor="let header of headerCategories">
+          <a class="nav-link" href="javascript:void(0)">{{header.name}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:void(0)"><i class="fas fa-shopping-cart"></i></a>

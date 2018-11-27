@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {GridDataType} from '../models/grid.model';
 import { Router } from "@angular/router";
 
-import {AdminServiceService} from '../services/admin-service.service';
+import {AdminService} from '../services/admin-service.service';
 
 @Component({
   selector: 'app-grid-table',
@@ -27,7 +27,7 @@ export class GridTableComponent implements OnInit {
   @Input() api:String;
   @Input() parentApis:String[];
   @Input() editLocation:String;
-  constructor(private admin:AdminServiceService,private router:Router) { }
+  constructor(private admin:AdminService,private router:Router) { }
 
   ngOnInit() {
     if(this.api && this.configuration){
