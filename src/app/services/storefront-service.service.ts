@@ -87,6 +87,10 @@ export class StorefrontService {
         return this.http.get(this.publicUrl+'get/'+api,this.gethttpHeaders(false));
     }
 
+    getHeaders() {
+        return this.http.get(this.publicUrl+'getHeaders',this.gethttpHeaders(false));
+    }
+
     updateItem(api:String,obj){                
         const body = JSON.stringify(obj);
         console.log('body: ' , body);

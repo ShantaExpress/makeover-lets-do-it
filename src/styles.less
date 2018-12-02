@@ -116,3 +116,21 @@ input,select,textarea{
         opacity: 0;
     }
 }
+
+
+.nav-item.dropdown{
+    &:hover,&:focus{
+        .dropdown-menu{
+            display: inline-block;
+            margin-top: -10px;
+        }
+    }
+}
+
+.dropdown-menu{    
+    &.show{
+        overflow: hidden;
+        margin-top: -10px;
+        max-height: max-content;
+    }
+}

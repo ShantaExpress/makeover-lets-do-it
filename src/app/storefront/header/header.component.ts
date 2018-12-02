@@ -11,12 +11,24 @@ export class HeaderComponent implements OnInit {
   constructor(private storeService: StorefrontService) { }
 
   ngOnInit() {
-    this.getCategories();
+    this.getHeaders();
   }
 
-  getCategories(){    
+  getCategories(){
     this.storeService.getAllPublicData('Category').subscribe(
       data=>{
+        this.headerCategories = data['data'];
+        console.log('Categories: ', data['data']);
+      },
+      error=>{
+        console.log('error: ' , error);
+      }
+    )
+  }
+
+  getHeaders(){
+    this.storeService.getHeaders().subscribe(
+      data=>{        
         this.headerCategories = data['data'];
         console.log('Categories: ', data['data']);
       },
