@@ -83,8 +83,21 @@ export class StorefrontService {
     
     //generic Api's service
 
-    getAllPublicData(api:String){
-        return this.http.get(this.publicUrl+'get/'+api,this.gethttpHeaders(false));
+    getAllPublicData(api:String, queryObj?:any){
+        let queryString = '';
+        if(queryObj){
+            let keys = Object.keys(queryObj);
+            for (var i = 0; i < keys.length; i++) {
+                if(i==0){
+                    queryString += '?';
+                }
+                queryString += keys[i]+'='+queryObj[keys[i]];
+                if(i < keys.length-1){
+                    queryString += '&';
+                }
+            }
+        }
+        return this.http.get(this.publicUrl+'get/'+api+queryString,this.gethttpHeaders(false));
     }
 
     getHeaders() {

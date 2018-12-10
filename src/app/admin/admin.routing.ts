@@ -24,6 +24,9 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { AdminService } from '../services/admin-service.service';
 import { SectionalCategoryComponent } from './sectional-category/sectional-category.component';
+import { BannersComponent } from './banners/banners.component';
+import { AddBannerComponent } from './banners/add-banner/add-banner.component';
+import { BannerListComponent } from './banners/banner-list/banner-list.component';
 import { AdminGuard } from '../guards/admin.guard';
 
 const adminRoutes: Routes = [
@@ -55,7 +58,13 @@ const adminRoutes: Routes = [
             { path: 'login', component: AdminLoginComponent},
             { path: 'brands', component: BrandsComponent},
             { path: 'sectional-categories', component: SectionalCategoryComponent},
-            { path: 'media', component: MediaComponent}
+            { path: 'media', component: MediaComponent},
+            { path: 'banners', component: BannersComponent,
+                children: [
+                    {path:'', component: BannerListComponent},
+                    {path:'add', component: AddBannerComponent}
+                ]
+            }
         ]
     }
 ];

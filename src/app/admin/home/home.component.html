@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="card-deck col-lg-3" *ngFor="let item of UseCases">
+    <div class="card-deck col-lg-3" *ngFor="let item of ContentNavigation">
         <div class="card bg-light text-dark">
           <div class="card-body text-center">
-            <p class="card-text">{{item}}</p>
+            <p class="card-text">
+              <a routerLink="/admin{{item.link}}" >{{item.name}}</a>
+            </p>
           </div>
         </div>
     </div>
-    </div>
+  </div>
 </div>

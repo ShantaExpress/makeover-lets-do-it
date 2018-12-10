@@ -1,3 +1,31 @@
-<p>
-  store home works!
-</p>
+
+<div id="homeCarousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+
+    <li data-target="#homeCarousel" [attr.data-slide-to]="i"
+      *ngFor="let banner of homeBanner; let i = index"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item" *ngFor="let banner of homeBanner; let j = index"
+      [ngClass]="{'active' : j == 0}">
+      <img src="http://localhost:3000/api/media/download/{{banner.imageId}}"
+       alt="{{banner.title}}" width="1100" height="500">       
+      <div class="carousel-caption">
+        <h3>{{banner.title}}</h3>
+        <p>{{banner.paragraph}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#homeCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#homeCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>

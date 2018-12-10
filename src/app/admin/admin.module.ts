@@ -35,6 +35,9 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { GridTableComponent } from '../grid-table/grid-table.component';
 import { SectionalCategoryComponent } from './sectional-category/sectional-category.component';
 import { SubCategoryFilterPipe,SectionalCategoryFilterPipe,BrandFilterPipe } from './admin.pipe';
+import { BannersComponent } from './banners/banners.component';
+import { AddBannerComponent } from './banners/add-banner/add-banner.component';
+import { BannerListComponent } from './banners/banner-list/banner-list.component';
 
 @NgModule({
   imports: [
@@ -72,7 +75,10 @@ import { SubCategoryFilterPipe,SectionalCategoryFilterPipe,BrandFilterPipe } fro
     SubCategoryFilterPipe,
     SectionalCategoryFilterPipe,
     BrandFilterPipe,
-    FileSelectDirective
+    FileSelectDirective,
+    BannersComponent,
+    AddBannerComponent,
+    BannerListComponent
   ],
   providers:[AdminService,AdminGuard]
 })

@@ -9,6 +9,13 @@ export class HomeComponent implements OnInit {
   UseCases=["Address", "Companies","User Groups", "Employees", "Customers", "Order", "Order Entries", 
   "Quotes", "Order History", "Booking Entry", "Prices", "Taxes", "Discounts", "Delivery Costs", "Payment Modes",
   "Marketing", "Product Reviews","Promotion Website Groups", "Product References", "Promotion Rules"];
+  
+  ContentNavigation = [
+    { name: 'Banners', link: '/banners'},
+    { name: 'Address', link: '/Address'},
+    { name: 'Companies', link: '/Companies'}
+  ]
+
   constructor(private title:Title) { }
 
   ngOnInit() {
