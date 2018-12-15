@@ -27,6 +27,7 @@ import { SectionalCategoryComponent } from './sectional-category/sectional-categ
 import { BannersComponent } from './banners/banners.component';
 import { AddBannerComponent } from './banners/add-banner/add-banner.component';
 import { BannerListComponent } from './banners/banner-list/banner-list.component';
+import { TagsComponent } from './tags/tags.component';
 import { AdminGuard } from '../guards/admin.guard';
 
 const adminRoutes: Routes = [
@@ -64,7 +65,8 @@ const adminRoutes: Routes = [
                     {path:'', component: BannerListComponent},
                     {path:'add', component: AddBannerComponent}
                 ]
-            }
+            },
+            { path: 'tags', component: TagsComponent},
         ]
     }
 ];

@@ -38,6 +38,7 @@ import { SubCategoryFilterPipe,SectionalCategoryFilterPipe,BrandFilterPipe } fro
 import { BannersComponent } from './banners/banners.component';
 import { AddBannerComponent } from './banners/add-banner/add-banner.component';
 import { BannerListComponent } from './banners/banner-list/banner-list.component';
+import { TagsComponent } from './tags/tags.component';
 
 @NgModule({
   imports: [
@@ -78,7 +79,8 @@ import { BannerListComponent } from './banners/banner-list/banner-list.component
     FileSelectDirective,
     BannersComponent,
     AddBannerComponent,
-    BannerListComponent
+    BannerListComponent,
+    TagsComponent
   ],
   providers:[AdminService,AdminGuard]
 })

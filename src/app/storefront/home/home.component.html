@@ -12,8 +12,10 @@
   <div class="carousel-inner">
     <div class="carousel-item" *ngFor="let banner of homeBanner; let j = index"
       [ngClass]="{'active' : j == 0}">
-      <img src="http://localhost:3000/api/media/download/{{banner.imageId}}"
-       alt="{{banner.title}}" width="1100" height="500">       
+      <a routerLink="{{banner.link}}">
+        <img src="http://localhost:3000/api/media/download/{{banner.imageId}}"
+          alt="{{banner.title}}" width="1100" height="500" />
+      </a>
       <div class="carousel-caption">
         <h3>{{banner.title}}</h3>
         <p>{{banner.paragraph}}</p>

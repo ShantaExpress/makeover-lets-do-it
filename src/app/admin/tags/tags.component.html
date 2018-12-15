@@ -1,0 +1,42 @@
+<div class="container">
+  <br/>
+  <div class="alert alert-success alert-dismissible" *ngIf="CRUDSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{CRUDSuccess}}
+  </div>
+  
+  <div class="alert alert-danger alert-dismissible" *ngIf="error">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div>{{error}}</div>
+  </div>
+  
+  <form novalidate #tagAddForm="ngForm">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-tags"></i></span>
+        </div>
+        <input type="text" class="form-control" id="name"
+        placeholder="Enter Tag Name" name="name" [(ngModel)]="newTag.name" required/>
+        <input type="text" class="form-control" id="identifier"
+        placeholder="Identifier" name="identifier" [(ngModel)]="newTag.identifier" required/>
+        
+        <select class="form-control" id="isEnabled" name="isEnabled"
+          [(ngModel)]="newTag.isEnabled" required>
+          <option value="">--Is Enabled??--</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="addTag(tagAddForm)" 
+            [disabled]="!tagAddForm.form.valid">
+            <span><i class="fas fa-plus"></i></span> Add
+          </button>
+        </div>
+      </div> 
+    </div>
+  </form>
+  <hr/>
+  <app-grid-table [configuration]="configuration" api="tags"></app-grid-table>
+</div>

@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   ContentNavigation = [
     { name: 'Banners', link: '/banners'},
     { name: 'Address', link: '/Address'},
-    { name: 'Companies', link: '/Companies'}
+    { name: 'Companies', link: '/Companies'},
+    { name: 'Tags', link: '/tags'}
   ]
 
   constructor(private title:Title) { }
