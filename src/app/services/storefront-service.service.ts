@@ -100,6 +100,10 @@ export class StorefrontService {
         return this.http.get(this.publicUrl+'get/'+api+queryString,this.gethttpHeaders(false));
     }
 
+    getPageSettings(page:String){
+        return this.http.get(this.publicUrl+'settings/'+page,this.gethttpHeaders(false));
+    }
+
     getHeaders() {
         return this.http.get(this.publicUrl+'getHeaders',this.gethttpHeaders(false));
     }
