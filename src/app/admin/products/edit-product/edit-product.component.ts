@@ -27,13 +27,15 @@ export class EditProductComponent implements OnInit {
     category_id:"",
     subCategory_id:"",
     sectionalCategory_id:"",
-    brand_id:""
+    brand_id:"",
+    tags:[]
   }; 
   newSpecification:any=''; 
   categories:any=[];
   subCategories:any=[];
   sectionalCategories:any=[];
   brands:any=[];
+  tags:any=[];
   CRUDSuccess:String = '';
   error:String='';
   constructor(private adminService: AdminService,private router:Router,private route: ActivatedRoute, private title:Title) {
@@ -54,6 +56,7 @@ export class EditProductComponent implements OnInit {
     this.getSubCategories();
     this.getCategories();
     this.getSectionalCategories();
+    this.getTags();
   }
 
   getProduct(productId){
@@ -122,6 +125,23 @@ export class EditProductComponent implements OnInit {
     )
   }
   
+  getTags(){    
+    this.adminService.getAllPrivateData('tags').subscribe(
+      data=>{
+        this.tags = data['data'];
+        if (this.product && this.product.tags && this.product.tags.length) {
+          this.tags = this.tags.map(item => {
+            item.checked = this.product.tags.indexOf(item._id) >= 0 ? true : false;
+            return item;
+          });
+        }
+      },
+      error=>{
+        console.log('error: ' , error);
+      }
+    )
+  }
+  
   addNewSpecificationProperty(spec){
     console.log('in addNewSpecificationProperty: ', spec);
     if(spec.specProp && spec.specProp.trim().length && spec.specPropValue && spec.specPropValue.trim().length){
@@ -145,8 +165,13 @@ export class EditProductComponent implements OnInit {
     list.splice(index,1);
   }
 
+  
+  setTags(){
+    this.product.tags = this.tags.filter(item=>{return item.checked}).map(item=>{return item._id});
+  }
 
   submitUpdateProduct(editProductForm:NgForm){
+    this.setTags();
     console.log('in submit: ' , this.product);    
     var self = this;
     

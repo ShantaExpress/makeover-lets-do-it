@@ -27,13 +27,15 @@ export class AddProductComponent implements OnInit {
     category_id:"",
     subCategory_id:"",
     sectionalCategory_id:"",
-    brand_id:""
+    brand_id:"",
+    tags:[]
   }; 
   newSpecification:any=''; 
   categories:any=[];
   subCategories:any=[];
   sectionalCategories:any=[];
   brands:any=[];
+  tags:any=[];
   CRUDSuccess:String = '';
   error:String='';
 
@@ -48,6 +50,7 @@ export class AddProductComponent implements OnInit {
     this.getSubCategories();
     this.getCategories();
     this.getSectionalCategories();
+    this.getTags();
   }
   addNewSpecification(newSpecification){
     console.log(' newSpecification : ', newSpecification);
@@ -62,6 +65,7 @@ export class AddProductComponent implements OnInit {
 
   addProduct(addProductForm:NgForm){
     var self = this;
+    this.setTags();
     console.log('in addProduct Form where product :', this.product);
     // return;
     window['showGlobalLoading']();
@@ -72,7 +76,7 @@ export class AddProductComponent implements OnInit {
           window['hideGlobalLoading']();
           addProductForm.reset();
           this.CRUDSuccess = 'Product Added Successfully';          
-          this.grid.getAllData();
+          //this.grid.getAllData();
           setTimeout(function(){
             self.CRUDSuccess = '';
           },5000);
@@ -132,6 +136,17 @@ export class AddProductComponent implements OnInit {
       }
     )
   }
+  getTags(){    
+    this.adminService.getAllPrivateData('tags').subscribe(
+      data=>{
+        this.tags = data['data'];
+        console.log('this.tags : ', this.tags);
+      },
+      error=>{
+        console.log('error: ' , error);
+      }
+    )
+  }
 
   addNewSpecificationProperty(spec){
     console.log('in addNewSpecificationProperty: ', spec);
@@ -155,5 +170,8 @@ export class AddProductComponent implements OnInit {
   deleteSpecificationProperty(list,index){
     list.splice(index,1);
   }
-
+  
+  setTags(){
+    this.product.tags = this.tags.filter(item=>{return item.checked}).map(item=>{return item._id});
+  }
 }

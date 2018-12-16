@@ -34,6 +34,8 @@ export class ProductListComponent implements OnInit {
     visible:true,editable:false,parentApi:'sectionalCategory',parentField:'name'},
     {field:'brand_id',display:'Brand',
     visible:true,editable:false,parentApi:'brand',parentField:'name'},
+    {field:'tags',display:'Tags', type:'Array',
+     visible:true,editable:true,parentApi:'tags',parentField:'name'}
   ];
 
   constructor(private adminService:AdminService,private title:Title) { }

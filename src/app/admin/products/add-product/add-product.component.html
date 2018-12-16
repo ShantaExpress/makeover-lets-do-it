@@ -183,6 +183,21 @@
         </option>
       </select>
     </div>
+    
+    <div class="form-group">
+      <label for="image">Select Tags:</label>
+      <div>
+        <span *ngFor="let tag of tags;let j = index" class="specPropHolder">          
+          <label class="pad-lr-10 pointer specProp" tabindex="0" for="tag{{j}}">
+            <input class="hidden" type="checkbox" [(ngModel)]="tag.checked"
+              name="tag" (change)="setTags()" id="tag{{j}}"/>
+            <i class="far fa-square" *ngIf="!tag.checked"></i>
+            <i class="fas fa-square text-success" *ngIf="tag.checked"></i>
+            {{tag.name}}
+          </label>
+        </span>
+      </div>
+    </div>
 
     <button type="button" class="btn btn-primary" (click)="addProduct(addProductForm)" 
     [disabled]="!addProductForm.form.valid">Add</button>
