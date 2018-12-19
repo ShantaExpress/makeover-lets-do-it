@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CartComponent } from './cart/cart.component';
 import { StoreBaseComponent } from './store-base/store-base.component';
 
+import { CarouselSetComponent } from '../carousel-set/carousel-set.component';
 import {StoreRouting} from './storefront.routing';
 
 // import {AdminModule} from '../admin/admin.module';
@@ -20,7 +21,7 @@ import { StorefrontService } from '../services/storefront-service.service';
     CommonModule,
     StoreRouting
   ],
-  declarations: [HeaderComponent, FooterComponent, HomeComponent, NotFoundComponent, CartComponent, StoreBaseComponent],
+  declarations: [HeaderComponent, CarouselSetComponent, FooterComponent, HomeComponent, NotFoundComponent, CartComponent, StoreBaseComponent],
   providers:[AdminService, StorefrontService]
 })
 export class StorefrontModule { }

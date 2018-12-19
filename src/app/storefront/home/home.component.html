@@ -33,7 +33,11 @@
   </a>
 </div>
 <br/><hr/><br/>
-<div *ngIf="miscellaneous && miscellaneous.length" class="container">
+
+<ng-container *ngFor="let set of miscellaneous">
+  <carousel-set [set]="set"></carousel-set>
+</ng-container>
+<!-- <div *ngIf="miscellaneous && miscellaneous.length" class="container">
   <ng-container *ngFor="let set of miscellaneous">
     <h2>{{set.header}}</h2>
     <div class="row">        
@@ -48,4 +52,4 @@
       </div>
     </div>
   </ng-container>
-</div>
+</div> -->

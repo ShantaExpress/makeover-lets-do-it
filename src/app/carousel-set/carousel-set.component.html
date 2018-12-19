@@ -1,0 +1,22 @@
+<h2>{{set.header}}</h2>
+<div class="container-fluid">
+    <div class="track" #track>
+      <div class="train" #train>
+        <div class="coaches" *ngFor="let product of set.records" [ngStyle]="{'width': recordWidth+'px'}">
+          <img class="media" src="http://localhost:3000/api/media/download/{{product.image_id}}"
+            alt="{{product.name}}" />
+          <div class="information">
+            <h6 class="name">{{product.name}}</h6>
+            <p class="description">{{product.description}}</p>
+            <a href="{{product.url}}" target="_blank" class="btn">Buy Now</a>
+          </div>
+        </div>
+      </div>      
+      <a class="carousel-control-prev" (click)="showPrev()">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" (click)="showNext()">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+</div>

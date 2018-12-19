@@ -1,0 +1,49 @@
+.track{
+    transition: transform .4s ease-in-out,-webkit-transform .4s ease-in-out;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    .train{
+        width: max-content;
+        height: 100%;
+        transform:translateX(0px);
+        .coaches{
+            display: inline-block;
+            // width: 260px;
+            height: 100%;
+            vertical-align: top;
+            position: relative;
+            .media{
+                height: 100%;
+                width: 100%;
+            }
+            .information{
+                text-align: center;
+                color: white;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-image: linear-gradient(to right, rgba(200, 200, 200, 0.1) , rgba(100, 100, 100, 1), rgba(200, 200, 200, 0.1));
+                .name{
+                    margin: 0;
+                }
+                .description{
+                    margin: 0;
+                }
+                a.btn{
+                    width: 100%;
+                    background-image: linear-gradient(to right, rgba(200, 200, 200, 0.1) , rgba(100, 200, 180, 0.5), rgba(200, 200, 200, 0.1));
+                    border-radius: 0;
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .carousel-control-prev, .carousel-control-next{
+        width: 50px;
+        height: 50px;
+        top: calc(50% - 25px);
+        background-color: rgba(100, 100, 100, 0.5);
+        cursor: pointer;
+    }
+}
