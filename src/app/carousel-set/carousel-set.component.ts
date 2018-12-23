@@ -14,6 +14,7 @@ export class CarouselSetComponent implements OnInit, AfterViewInit {
   @Input() api:String;
   @Input() parentApis:String[];
   @Input() editLocation:String;
+  disableNext: boolean = false;
   recordWidth: number = 260;
   shifted: number = 0;
   @ViewChild('train') train;
@@ -31,24 +32,27 @@ export class CarouselSetComponent implements OnInit, AfterViewInit {
   }
 
   showPrev(){
-    console.log('train : ', this.train.nativeElement.style);
-    if(this.shifted > -260){
-      this.shifted = 0;
+    this.disableNext = false;
+    if((this.shifted + this.recordWidth) < 0) {
+      this.shifted = this.shifted + this.recordWidth;
     } else {
-      this.shifted = this.shifted + 260;
+      this.shifted = 0;
     }
     this.train.nativeElement.style.transform = 'translateX(' + this.shifted + 'px)';
   }
 
   showNext(){
-    console.log(window.innerWidth);
-    console.log(this.train.nativeElement.clientWidth);
-    console.log(this.track.nativeElement.clientWidth);
-    if(this.shifted > -260){
-      this.shifted = 0;
-    } else {
-      this.shifted = this.shifted + 260;
+    if((this.shifted - this.recordWidth) > (this.track.nativeElement.clientWidth - this.train.nativeElement.clientWidth)) {
+      this.shifted = this.shifted - this.recordWidth;
+      this.disableNext = false;
     }
+    else {
+      this.shifted = (this.track.nativeElement.clientWidth - this.train.nativeElement.clientWidth);
+      this.disableNext = true;
+    }
+    console.log('this.shifted : ', this.shifted);
+    console.log('(this.track.nativeElement.clientWidth - this.train.nativeElement.clientWidth) : ', (this.track.nativeElement.clientWidth - this.train.nativeElement.clientWidth));
+
     this.train.nativeElement.style.transform = 'translateX(' + this.shifted + 'px)';
 
   }
