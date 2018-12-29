@@ -29,7 +29,11 @@
         </select>
 
         <input type="text" class="form-control" id="url"
-        placeholder="URL" name="url" [(ngModel)]="newCategory.url" required/>
+        placeholder="URL" name="url" [(ngModel)]="newCategory.url"/>
+
+        <input type="text" class="form-control" id="imageName"
+        placeholder="Image Name" name="imageName" [(ngModel)]="newCategory.imageName"/>
+
         <div class="input-group-append">
           <button type="button" class="btn btn-primary" (click)="addCategory(categoryAddForm)" 
             [disabled]="!categoryAddForm.form.valid">

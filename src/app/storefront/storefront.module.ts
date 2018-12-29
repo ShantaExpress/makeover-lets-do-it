@@ -15,13 +15,20 @@ import {StoreRouting} from './storefront.routing';
 
 import { AdminService } from '../services/admin-service.service';
 import { StorefrontService } from '../services/storefront-service.service';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   imports: [
     CommonModule,
     StoreRouting
   ],
-  declarations: [HeaderComponent, CarouselSetComponent, FooterComponent, HomeComponent, NotFoundComponent, CartComponent, StoreBaseComponent],
+  declarations: [ HeaderComponent, CarouselSetComponent, FooterComponent, HomeComponent,
+                  NotFoundComponent, CartComponent, StoreBaseComponent, SubCategoryComponent,
+                  ProductListComponent, SigninComponent, SignupComponent, CategoryComponent],
   providers:[AdminService, StorefrontService]
 })
 export class StorefrontModule { }

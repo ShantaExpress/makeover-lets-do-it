@@ -15,7 +15,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class CategoriesComponent implements OnInit {
   newCategory:any={
-    name:'',identifier:'',isEnabled:'',url:''
+    name:'',identifier:'',isEnabled:'',url:'', imageName: ''
   }
   CRUDSuccess:String = '';
   error:String='';
@@ -23,7 +23,8 @@ export class CategoriesComponent implements OnInit {
     {field:'name',display:'Category Name', visible:true,editable:true},
     {field:'identifier',display:'Identifier', visible:true,editable:true},
     {field:'isEnabled',display:'IsEnabled', visible:true,editable:true},
-    {field:'url',display:'URL', visible:true,editable:true}
+    {field:'url',display:'URL', visible:true,editable:true},
+    {field:'imageName',display:'Image Name', visible:true,editable:true}
   ];
   
   @ViewChild(GridTableComponent)

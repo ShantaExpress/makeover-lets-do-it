@@ -29,8 +29,10 @@
         </select>
         
         <input type="text" class="form-control" id="url"
-        placeholder="URL" name="url" [(ngModel)]="newSectionalCategory.url" required/>
+        placeholder="URL" name="url" [(ngModel)]="newSectionalCategory.url"/>
         
+        <input type="text" class="form-control" id="imageName"
+        placeholder="Image Name" name="imageName" [(ngModel)]="newSectionalCategory.imageName"/>
         
         <select class="form-control" id="subcategory.name" name="subcategory.name"
           [(ngModel)]="newSectionalCategory.subCategory_id" required>

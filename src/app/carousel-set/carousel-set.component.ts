@@ -23,12 +23,14 @@ export class CarouselSetComponent implements OnInit, AfterViewInit {
   constructor(private store:StorefrontService, private router:Router) { }
 
   ngOnInit() {
-
+    console.log('set: ', this.set);
   }
 
   ngAfterViewInit(){
-    const trackLen = this.track.nativeElement.clientWidth;
-    this.recordWidth = trackLen/(Math.round(trackLen/260));
+    if(this.track){
+      const trackLen = this.track.nativeElement.clientWidth;
+      this.recordWidth = trackLen/(Math.round(trackLen/260));
+    }
   }
 
   showPrev(){

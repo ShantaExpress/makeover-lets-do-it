@@ -39,6 +39,7 @@ import { BannersComponent } from './banners/banners.component';
 import { AddBannerComponent } from './banners/add-banner/add-banner.component';
 import { BannerListComponent } from './banners/banner-list/banner-list.component';
 import { TagsComponent } from './tags/tags.component';
+import { PageSettingsComponent } from './page-settings/page-settings.component';
 
 @NgModule({
   imports: [
@@ -80,7 +81,8 @@ import { TagsComponent } from './tags/tags.component';
     BannersComponent,
     AddBannerComponent,
     BannerListComponent,
-    TagsComponent
+    TagsComponent,
+    PageSettingsComponent
   ],
   providers:[AdminService,AdminGuard]
 })

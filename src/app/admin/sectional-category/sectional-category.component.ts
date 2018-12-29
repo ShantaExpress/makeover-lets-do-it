@@ -13,7 +13,7 @@ import { GridTableComponent } from '../../grid-table/grid-table.component';
 })
 export class SectionalCategoryComponent implements OnInit {
   newSectionalCategory:any={
-    name:'', identifier:'', isEnabled:'',url:'',subCategory_id:''
+    name:'', identifier:'', isEnabled:'',url:'',subCategory_id:'', imageName:''
   };
   subCategories:any=[];
   CRUDSuccess:String = '';
@@ -24,7 +24,8 @@ export class SectionalCategoryComponent implements OnInit {
     {field:'isEnabled',display:'Is Enabled', visible:true,editable:true},
     {field:'url',display:'URL', visible:true,editable:true},
     {field:'subCategory_id',display:'Sub-Category',
-     visible:true,editable:true,parentApi:'subCategory',parentField:'name'}
+     visible:true,editable:true,parentApi:'subCategory',parentField:'name'},
+    {field:'imageName',display:'Image Name', visible:true,editable:true}
   ];
   
   @ViewChild(GridTableComponent)

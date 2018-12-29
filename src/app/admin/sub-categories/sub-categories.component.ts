@@ -13,7 +13,7 @@ import { GridTableComponent } from '../../grid-table/grid-table.component';
 })
 export class SubCategoriesComponent implements OnInit {
   newSubCategory:any={
-    name:'', identifier:'', isEnabled:'',url:'',category_id:''
+    name:'', identifier:'', isEnabled:'',url:'',category_id:'', imageName:''
   };
   categories:any=[];
   CRUDSuccess:String = '';
@@ -24,7 +24,8 @@ export class SubCategoriesComponent implements OnInit {
     {field:'isEnabled',display:'Is Enabled', visible:true,editable:true},
     {field:'url',display:'URL', visible:true,editable:true},
     {field:'category_id',display:'Category',
-     visible:true,editable:true,parentApi:'category',parentField:'name'}
+     visible:true,editable:true,parentApi:'category',parentField:'name'},
+    {field:'imageName',display:'Image Name', visible:true,editable:true}
   ];
   
   @ViewChild(GridTableComponent)

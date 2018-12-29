@@ -29,9 +29,11 @@
         </select>
         
         <input type="text" class="form-control" id="url"
-        placeholder="URL" name="url" [(ngModel)]="newSubCategory.url" required/>
-        
-        
+        placeholder="URL" name="url" [(ngModel)]="newSubCategory.url"/>
+                
+        <input type="text" class="form-control" id="imageName"
+        placeholder="Image Name" name="imageName" [(ngModel)]="newSubCategory.imageName"/>
+
         <select class="form-control" id="category.name" name="category.name"
           [(ngModel)]="newSubCategory.category_id" required>
           <option value="">--Choose Category--</option>

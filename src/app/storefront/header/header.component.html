@@ -1,6 +1,6 @@
 <div class="bg-dark">
   <nav class="container navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="javascript:void(0)"><i class="fas fa-tshirt"></i> SHANTA APPARELS</a>
+    <a class="navbar-brand" routerLink="/store"><i class="fas fa-tshirt"></i> SHANTA APPARELS</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,14 +18,18 @@
               </form>
         </li>
         <li class="nav-item dropdown" *ngFor="let header of headerCategories; let i = index">
-          <a class="nav-link" [ngClass]="{'dropdown-toggle': header.subCategories && header.subCategories.length}" href="#" id="navbardrop{{i}}" data-toggle="dropdown" >
+          <a class="nav-link" [ngClass]="{'dropdown-toggle': header.subCategories && header.subCategories.length}"
+            routerLink="/store/shop/{{header.url}}" routerLinkActive="active" id="navbardrop{{i}}" data-toggle="dropdown" >
             {{header.name}}
           </a>
-          <div class="dropdown-menu position-right" *ngIf="header.subCategories && header.subCategories.length">
+          <div class="dropdown-menu position-right"
+            *ngIf="header.subCategories && header.subCategories.length">
             <ng-container *ngFor="let subCat of header.subCategories">
-              <a class="dropdown-item" href="#" ><b>{{subCat.name}}</b></a>
+              <a class="dropdown-item" routerLink="/store/shop/{{header.url}}{{subCat.url}}"
+                routerLinkActive="active"><b>{{subCat.name}}</b></a>
               <ng-container *ngFor="let secCat of subCat.sectionalCategories">
-                <a class="dropdown-item" href="#" >{{secCat.name}}</a>
+                <a class="dropdown-item" routerLink="/store/shop/{{header.url}}{{subCat.url}}{{secCat.url}}"
+                routerLinkActive="active">{{secCat.name}}</a>
               </ng-container>
             </ng-container>
           </div>
