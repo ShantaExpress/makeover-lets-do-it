@@ -1,3 +1,7 @@
-<p>
-  sub-category works!
-</p>
+<div *ngIf="subCategory && subCategory.name">
+    <div class="banner-top" 
+      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCategory.imageName+')' }">
+      <!-- <img class="subCategory-banner" src="http://localhost:3000/api/media/download/{{subCategory.imageName}}"
+          alt="{{subCategory.name}}" /> -->
+    </div>
+</div>

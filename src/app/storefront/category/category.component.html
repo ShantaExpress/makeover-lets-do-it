@@ -1,128 +1,38 @@
-<div *ngIf="category.length">
-    <div _ngcontent-c4="" class="banner-top" *ngFor="let cat of category"
-      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+cat.imageName+')' }">
-      <!-- <img class="category-banner" src="http://localhost:3000/api/media/download/{{cat.imageName}}"
-          alt="{{cat.name}}" /> -->
+<div *ngIf="category && category.name">
+    <div class="banner-top" 
+      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+category.imageName+')' }">
+      <!-- <img class="category-banner" src="http://localhost:3000/api/media/download/{{category.imageName}}"
+          alt="{{category.name}}" /> -->
     </div>
-</div> 
+</div>
+<div class="container">
+    <h1>Explore Our Exclusive {{category.name}} Collections</h1>
+</div>
 
+<div class="row subCat-seperator">
+    <div class="col-4 first"></div>
+    <div class="col-4 second"></div>
+    <div class="col-4 third"></div>
+</div>
+<div *ngFor="let subCat of subCategories; let i = index">
+    <div class="banner-top subCategoryBox"
+        [ngClass]="{'right': (i%2 == 1)}"
+      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCat.imageName+')' }">
+      <div class="highlighter-box">
+        <div class="text-node">
+            <a routerLink="/store/shop/{{category.url}}{{subCat.url}}"
+            routerLinkActive="active">{{subCat.name}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row subCat-seperator">
+        <div class="col-4 first"></div>
+        <div class="col-4 second"></div>
+        <div class="col-4 third"></div>
+    </div>
+</div>
 
 <br/>
 <br/>
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+

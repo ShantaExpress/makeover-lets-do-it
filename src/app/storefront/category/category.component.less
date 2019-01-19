@@ -9,3 +9,71 @@
 .category-banner{
     width: 100%;
 }
+
+.subCategoryBox {
+    position: relative;
+    height: 400px;
+    .highlighter-box {
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: -webkit-xxx-large;
+        display: table;
+        position: absolute;
+        padding: 20px;
+
+        .text-node {
+            display: table-cell;
+            vertical-align: middle;
+            position: relative;
+            a {
+                color: white;
+                &:hover {
+                    background: none;
+                    text-decoration: none;
+                }
+            }
+            &:after {
+                content: "";
+                display: inline-block;
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: -20px;
+                left: calc(100% + 20px);
+                border-style: solid;
+                border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+                border-width: 0 0 400px 100px;
+            }
+        }
+    }
+    &.right {
+        .highlighter-box {
+            right: 0;
+            .text-node {
+                &:after {
+                    right: calc(100% + 20px);
+                    border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+                    border-width: 400px 100px 0 0;
+                    left: unset;
+                }
+            }
+        }
+
+    }    
+}
+
+.subCat-seperator {
+    &>div {
+        height: 5px;        
+    }
+    .first {
+        background: rgb(228, 110, 97);
+    }
+    .second {
+        background: limegreen;
+    }
+    .third {
+        background: lightseagreen
+    }
+}
