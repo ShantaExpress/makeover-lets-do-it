@@ -49,7 +49,10 @@ export class CarouselSetComponent implements OnInit, AfterViewInit {
       this.disableNext = false;
     }
     else {
-      this.shifted = (this.track.nativeElement.clientWidth - this.train.nativeElement.clientWidth);
+      console.log('in else');
+      if (this.track.nativeElement.clientWidth < this.train.nativeElement.clientWidth) {
+        this.shifted = (this.track.nativeElement.clientWidth - this.train.nativeElement.clientWidth);
+      }
       this.disableNext = true;
     }
     console.log('this.shifted : ', this.shifted);

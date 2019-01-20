@@ -23,6 +23,13 @@ export class GridTableComponent implements OnInit {
   optionVal:any={a:2,b:2};
   optionValAr:any[]=[{a:1,b:2},{a:2,b:2},{a:3,b:2}];
 
+  filter: any = {
+    by: '',
+    index: '',
+    value: '',
+    searchVal: ''
+  };
+
   @Input() configuration:GridDataType[];
   @Input() api:String;
   @Input() parentApis:String[];
@@ -69,7 +76,12 @@ export class GridTableComponent implements OnInit {
     this.gridData=[];
     this.loading = true;
     var self = this;
-    this.admin.getAllPrivateData(this.api).subscribe(
+    var api = this.api;
+    if(this.filter.by && this.filter.searchVal) {
+      console.log('filter : ', this.filter);
+      api += '?' + this.filter.by + '=' + this.filter.searchVal;
+    }
+    this.admin.getAllPrivateData(api).subscribe(
       data=>{
         setTimeout(function(){
           self.loading = false;
@@ -209,5 +221,47 @@ export class GridTableComponent implements OnInit {
     } else {
       ar.splice(index,1);
     }
+  }
+
+  submitFilter(filterForm) {
+    var self = this;
+    let filterBy = this.configuration[this.filter.index];
+    self.filter.by = filterBy.field;
+    self.filter.searchVal = self.filter.value;
+    console.log('filterBy: ', filterBy);
+    var parentApi = filterBy.parentApi;
+    if (parentApi) {
+      var keys = Object.keys(this.parentData);
+      var abort = true;
+      for (var i = 0; i < keys.length; i++) {
+        if(keys[i] === parentApi) {
+          var localData = self.parentData[keys[i]].filter(function(item){
+            return item.name === self.filter.value;
+          });
+          console.log('localData: ', localData);
+          if(localData.length){
+            self.filter.searchVal = localData[0]._id;
+            abort = false;
+          }
+          break;
+        }
+      }
+      if(!abort) {
+        this.getAllData();
+        return;
+      }
+    }
+
+    this.getAllData();
+  }
+
+  resetFilter(filterForm) {
+    filterForm.reset();
+    this.filter = {
+      by: '',
+      index: '',
+      value: ''
+    };
+    this.getAllData();
   }
 }

@@ -8,6 +8,33 @@
   <div>{{crudError}}</div>
 </div>
 <p></p>
+<div class="filterBlock">  
+  <form novalidate #filterForm="ngForm">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-filter"></i></span>
+        </div>
+        
+        <select class="form-control" id="filterBy" name="filterBy"
+          [(ngModel)]="filter.index" required>
+          <option value="">--Filter By--</option>
+          <option *ngFor="let header of configuration; let i = index" value="{{i}}">{{header.display}}</option>
+        </select>
+
+        <input type="text" class="form-control" id="value" required
+        placeholder="Filter value" name="value" [(ngModel)]="filter.value"/>
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-primary" (click)="submitFilter(filterForm)" 
+            [disabled]="!filterForm.form.valid"> Filter
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="resetFilter(filterForm)">Reset</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+</div>
 <i class="fas fa-sync-alt pointer" (click)="getAllData()"></i>&nbsp;&nbsp;
 <i class="fas fa-trash-alt pointer"
  [ngClass]="{'text-success': selectedItemsAvailable(), 'disabled text-secondary': !selectedItemsAvailable() }"

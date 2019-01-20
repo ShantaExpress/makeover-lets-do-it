@@ -19,7 +19,9 @@
         </li>
         <li class="nav-item dropdown" *ngFor="let header of headerCategories; let i = index">
           <a class="nav-link" [ngClass]="{'dropdown-toggle': header.subCategories && header.subCategories.length}"
-            routerLink="/store/shop/{{header.url}}" routerLinkActive="active" id="navbardrop{{i}}" data-toggle="dropdown" >
+            routerLink="/store/shop/{{header.url}}" routerLinkActive="active" id="navbardrop{{i}}" data-toggle="dropdown"
+            (click)="categorySelected()"
+          >
             {{header.name}}
           </a>
           <div class="dropdown-menu position-right"
