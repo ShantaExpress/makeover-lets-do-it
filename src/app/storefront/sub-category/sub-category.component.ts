@@ -11,6 +11,7 @@ import { StorefrontService } from '../../services/storefront-service.service';
 export class SubCategoryComponent implements OnInit {
 
   subCategory: any;
+  productList: any = [];
 
   constructor(
     private title: Title,
@@ -32,10 +33,23 @@ export class SubCategoryComponent implements OnInit {
     this.storeService.getAllPublicData('SubCategory', {identifier: subCategory}).subscribe(
       data => {
         this.subCategory = (data['data'].length) ? data['data'][0] : {};
+        this.getProductList();
       },
       error => {
         console.log('error: ', error);
       }
     );
+  }
+
+  getProductList() {
+    this.storeService.getAllPublicData('Product', {subCategory_id: this.subCategory._id}).subscribe(
+      data => {
+        this.productList = data['data'];
+      },
+      error => {
+        console.log('error: ', error);
+      }
+    );
+
   }
 }

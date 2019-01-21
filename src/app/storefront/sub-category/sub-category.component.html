@@ -5,3 +5,18 @@
           alt="{{subCategory.name}}" /> -->
     </div>
 </div>
+<section class="container-fluid">
+    <div class="row">
+        <ng-container *ngFor="let product of productList">
+            <div class="col-3">
+                <div class="product">
+                    <div class="product-image">
+                        <img class="" src="http://localhost:3000/api/media/download/{{product.image_id}}"
+                        alt="{{product.name}}" />
+                    </div>
+                    <div class="product-name">{{product.name}}</div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>
