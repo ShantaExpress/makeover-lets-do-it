@@ -14,3 +14,26 @@
         color: green;
     }
 }
+
+.sectionalLink{
+    padding-left: 2rem;
+    &.active {
+        color: black;
+        background: transparent;
+    }
+    .fa-check{
+        color: green;
+        display: none;
+    }
+    &.active {
+        .fa-check {
+            display: inline-block;
+        }
+    }
+}
+
+// .dropdown-toggle.active {
+//     &+.dropdown-menu {
+//         display: block;
+//     }
+// }

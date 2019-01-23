@@ -30,8 +30,8 @@ const storeRoutes: Routes = [
             { path: 'signup', component: SignupComponent},
             { path: 'cart', component: CartComponent},
             { path: 'shop/:category', component: CategoryComponent},
-            { path: 'shop/:category/:subCategory', component: SubCategoryComponent},
-            { path: 'shop/:category/:subCategory/:products', component: ProductListComponent},
+            { path: 'shop/:category/:subCategory', component: ProductListComponent},
+            { path: 'shop/:category/:subCategory/:productType', component: ProductListComponent},
         ]
     }
         

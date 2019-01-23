@@ -1,3 +1,30 @@
-<p>
-  product-list works!
-</p>
+<div *ngIf="subCategory && subCategory.name">
+    <div class="banner-top" 
+        [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCategory.imageName+')' }">
+    <!-- <img class="subCategory-banner" src="http://localhost:3000/api/media/download/{{subCategory.imageName}}"
+        alt="{{subCategory.name}}" /> -->
+  </div>
+</div>
+<section class="container-fluid">
+  <div class="row">
+      <aside class="col-3">
+          Filters
+      </aside>
+      <div class="col-9">
+          <div class="row">
+                <ng-container *ngFor="let product of productList">
+                  <div class="col-3">
+                      <div class="product">
+                          <div class="product-image">
+                              <img class="" src="http://localhost:3000/api/media/download/{{product.image_id}}"
+                              alt="{{product.name}}" />
+                          </div>
+                          <div class="product-name">{{product.name}}</div>
+                          <div class="product-price">₹{{product.basePrice}}</div>
+                      </div>
+                  </div>
+                </ng-container>
+            </div>
+      </div>
+  </div>
+</section>
