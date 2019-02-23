@@ -15,12 +15,25 @@
                 <ng-container *ngFor="let product of productList">
                   <div class="col-3">
                       <div class="product">
+                          <div class="fav-box" (click)="toggleFav(product)">
+                            <i *ngIf="product.fav" class="fas fa-heart"></i>
+                            <i *ngIf="!product.fav" class="far fa-heart"></i>
+                          </div>
                           <div class="product-image">
                               <img class="" src="http://localhost:3000/api/media/download/{{product.image_id}}"
                               alt="{{product.name}}" />
                           </div>
                           <div class="product-name">{{product.name}}</div>
-                          <div class="product-price">₹{{product.basePrice}}</div>
+                          <div class="brand"><small><i>{{storeService.getProductInfo('Brand', '_id', product.brand_id, 'name')}}</i></small></div>
+                          <div class="product-price">
+                            <div class="latest-price">₹{{productHelper.getPriceFormat(product.basePrice*((100-product.discount)/100))}}</div>
+                            <div class="actual-price" *ngIf="product.discount">
+                                <small>₹{{productHelper.getPriceFormat(product.basePrice)}}</small>
+                            </div>
+                            <div class="discount" *ngIf="product.discount">
+                                <small><i>{{product.discount}}% off</i></small>
+                            </div>
+                          </div>
                       </div>
                   </div>
                 </ng-container>

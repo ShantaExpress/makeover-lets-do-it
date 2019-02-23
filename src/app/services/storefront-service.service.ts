@@ -9,14 +9,56 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class StorefrontService {
-  
+  productInfo: any = {
+    Brand: [],
+    Category: [],
+    SubCategory: [],
+    SectionalCategory: []    
+  };
+  checks: any = 0;
+  ready: any = false;
+  getNotifiedWhenReady: EventEmitter<boolean> = new EventEmitter(true);
+
   loggedUser = new EventEmitter<User>();
   selfUser:User;
   url: any = 'http://localhost:3000/api/';
   publicUrl: any = this.url + 'public/';
   //headers:Headers = new Headers({'Content-Type': 'application/json'});
   httpOptions:any;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+      this.fetchProductInfo('Brand');
+      this.fetchProductInfo('Category');
+      this.fetchProductInfo('SubCategory');
+      this.fetchProductInfo('SectionalCategory');
+   }
+
+   fetchProductInfo(api) {
+    this.getAllPublicData(api).subscribe(
+        data => {
+          this.productInfo[api] = data['data'];
+          this.checks++;
+          if (this.checks === Object.keys(this.productInfo).length) {
+            this.ready = true;
+            this.getNotifiedWhenReady.next(true);
+          }
+        },
+        error => {
+          console.log('error: ', error);
+        }
+      );
+   }
+
+   getProductInfo(api,prop,value,returnProp) {
+       let info = this.productInfo[api].find(item=>{
+           return item[prop] == value;
+       });
+       if(returnProp) { 
+            return (info && info[returnProp])?info[returnProp]:undefined;
+       } else {
+           return info || undefined;
+       }
+       
+   }
 
   gethttpHeaders(token:Boolean){
     if(token){

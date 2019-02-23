@@ -9,8 +9,27 @@
 
 .product {
     margin: 30px auto;
+    padding: 5px;
+    position: relative;
+    &:hover{
+        box-shadow: 0 0 30px grey;
+        top: -5px;
+    }
+    .fav-box {
+        position: absolute;
+        cursor: pointer;
+        right: 5px;
+        top: 5px;
+        .fa-heart {
+            color: gold;
+            border-color: black;
+        }
+        .far.fa-heart {
+            color: black;
+        }
+    }
     .product-image {
-        height: 300px;
+        height: 250px;
         overflow: hidden;
         img {
             width: 100%;
@@ -19,5 +38,17 @@
     .product-name {
         padding: 10px 0 0;
         font-weight: bold;
+    }
+    .product-price {
+        display: flex;
+        justify-content: space-between;
+
+        .actual-price {
+            text-decoration: line-through;
+            color: grey;
+        }
+        .discount{
+            color: green;
+        }
     }
 }

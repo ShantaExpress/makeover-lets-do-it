@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { AdminService } from '../../services/admin-service.service';
 import { Title } from '@angular/platform-browser';
 import { GridTableComponent } from '../../grid-table/grid-table.component';
-import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload';
 import { HttpClient,HttpResponse,HttpHeaders } from '@angular/common/http';
 import {saveAs} from 'file-saver';
 

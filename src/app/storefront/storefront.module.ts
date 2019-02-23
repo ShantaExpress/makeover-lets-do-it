@@ -15,6 +15,7 @@ import {StoreRouting} from './storefront.routing';
 
 import { AdminService } from '../services/admin-service.service';
 import { StorefrontService } from '../services/storefront-service.service';
+import { ProductHelperService } from '../services/product-helper.service';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { SigninComponent } from './signin/signin.component';
@@ -29,6 +30,6 @@ import { CategoryComponent } from './category/category.component';
   declarations: [ HeaderComponent, CarouselSetComponent, FooterComponent, HomeComponent,
                   NotFoundComponent, CartComponent, StoreBaseComponent, SubCategoryComponent,
                   ProductListComponent, SigninComponent, SignupComponent, CategoryComponent],
-  providers:[AdminService, StorefrontService]
+  providers:[AdminService, StorefrontService, ProductHelperService]
 })
 export class StorefrontModule { }
