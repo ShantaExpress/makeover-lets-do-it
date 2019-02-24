@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import { StorefrontService } from '../../services/storefront-service.service';
 import { ProductHelperService } from '../../services/product-helper.service';
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -22,8 +23,6 @@ export class ProductListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let price = this.productHelper.getPriceFormat(1299);
-    console.log('price : ', price);
     this.route.url.subscribe(url =>{
       var subCategory = this.route.snapshot.params['subCategory'];
       if(this.storeService.ready) {

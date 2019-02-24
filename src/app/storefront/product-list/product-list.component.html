@@ -23,7 +23,9 @@
                               <img class="" src="http://localhost:3000/api/media/download/{{product.image_id}}"
                               alt="{{product.name}}" />
                           </div>
-                          <div class="product-name">{{product.name}}</div>
+                          <div class="product-name">
+                            <a routerLink="/store/buy/{{product.identifier}}">{{product.name}}</a>
+                          </div>
                           <div class="brand"><small><i>{{storeService.getProductInfo('Brand', '_id', product.brand_id, 'name')}}</i></small></div>
                           <div class="product-price">
                             <div class="latest-price">₹{{productHelper.getPriceFormat(product.basePrice*((100-product.discount)/100))}}</div>

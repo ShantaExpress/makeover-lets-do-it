@@ -10,6 +10,7 @@ import { StoreBaseComponent } from './store-base/store-base.component';
 import { HomeComponent } from './home/home.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminService } from '../services/admin-service.service';
@@ -32,6 +33,8 @@ const storeRoutes: Routes = [
             { path: 'shop/:category', component: CategoryComponent},
             { path: 'shop/:category/:subCategory', component: ProductListComponent},
             { path: 'shop/:category/:subCategory/:productType', component: ProductListComponent},
+            { path: 'shop/:category/:subCategory/:productType', component: ProductListComponent},
+            { path: 'buy/:productIdentifier', component: ProductDetailsComponent},
         ]
     }
         

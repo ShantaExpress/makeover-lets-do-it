@@ -1,0 +1,45 @@
+
+.product-image-box {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    img {
+        height: 100%;
+    }
+    .fav-box {
+        position: absolute;
+        cursor: pointer;
+        right: 10px;
+        top: 0px;
+        .fa-heart {
+            color: gold;
+            font-size: 30px;
+            border-color: black;
+        }
+        .far.fa-heart {
+            color: black;
+        }
+    }
+}
+
+
+.product {
+    margin: 0px auto;
+    padding: 5px;
+    position: relative;
+    transition: 2s;
+    .product-name {
+        font-weight: bold;
+    }
+    .product-price {
+
+        .actual-price {
+            text-decoration: line-through;
+            color: grey;
+        }
+        .discount{
+            color: green;
+        }
+    }
+}
