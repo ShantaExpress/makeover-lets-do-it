@@ -36,6 +36,15 @@
                                 <small><i>{{product.discount}}% off</i></small>
                             </div>
                           </div>
+                          <div class="highlights">
+                            <ng-container *ngFor="let specification of product.specification">
+                              <ng-container *ngFor="let feature of specification.list">
+                                <div *ngIf="feature.highlight.toString()=='true'">
+                                  <span class="featureProp">{{feature.prop}}</span> : {{feature.propValue}}
+                                </div>
+                              </ng-container>
+                            </ng-container>
+                          </div>
                       </div>
                   </div>
                 </ng-container>
