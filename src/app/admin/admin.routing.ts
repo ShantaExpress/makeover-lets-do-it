@@ -12,7 +12,6 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
 import { AddressComponent } from './address/address.component';
-import { CategoryComponent } from './category/category.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -29,6 +28,10 @@ import { AddBannerComponent } from './banners/add-banner/add-banner.component';
 import { BannerListComponent } from './banners/banner-list/banner-list.component';
 import { TagsComponent } from './tags/tags.component';
 import { AdminGuard } from '../guards/admin.guard';
+import { ProductSpecificationComponent } from './product-specification/product-specification.component';
+import { ProductSpecificationListComponent } from './product-specification/product-specification-list/product-specification-list.component';
+import { AddProductSpecificationComponent } from './product-specification/add-product-specification/add-product-specification.component';
+import { UpdateProductSpecificationComponent } from './product-specification/update-product-specification/update-product-specification.component';
 
 const adminRoutes: Routes = [
     {
@@ -66,7 +69,16 @@ const adminRoutes: Routes = [
                     {path:'add', component: AddBannerComponent}
                 ]
             },
-            { path: 'tags', component: TagsComponent},
+            { path: 'tags', component: TagsComponent},            
+            { path: 'productFeatures', component: ProductSpecificationComponent,
+                children:[
+                // {path:'', redirectTo: 'list', pathMatch: 'full'},
+                {path:'',component:ProductSpecificationListComponent},
+                {path:'add',component:AddProductSpecificationComponent},
+                {path:'edit',component:UpdateProductSpecificationComponent},
+                {path:'edit/:id',component:UpdateProductSpecificationComponent}
+                ]
+            },
         ]
     }
 ];

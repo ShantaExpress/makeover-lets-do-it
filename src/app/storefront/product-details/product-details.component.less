@@ -33,13 +33,29 @@
         font-weight: bold;
     }
     .product-price {
-
+        display: flex;
+        &>*{
+            margin: 10px 10px 10px 0;
+        }
         .actual-price {
             text-decoration: line-through;
             color: grey;
         }
         .discount{
             color: green;
+        }
+    }
+    .user-deal{
+        .btn{
+            margin-right: 5px;
+            &.add-to-cart{
+                background-color: darkgreen;
+                color: #fff;
+            }
+            &.buy-now{
+                background-color: navy;
+                color: #fff;
+            }
         }
     }
 }

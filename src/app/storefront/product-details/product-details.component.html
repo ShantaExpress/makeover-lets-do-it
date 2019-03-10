@@ -1,7 +1,7 @@
 <section class="container-fluid">
     <br/><br/>
   <div class="row" *ngIf="product.name">
-    <div class="col-5">
+    <div class="col-md-5">
       <div class="product-image-box">
         <img src="http://localhost:3000/api/media/download/{{product.image_id}}"
         alt="{{product.name}}" />
@@ -11,12 +11,13 @@
         </div>
       </div>
     </div>
-    <div class="col-7">
+    <div class="col-md-7">
       <div class="product">
         <div class="product-name">
           <a routerLink="/store/buy/{{product.identifier}}">{{product.name}}</a>
         </div>
         <div class="brand"><small><i>{{storeService.getProductInfo('Brand', '_id', product.brand_id, 'name')}}</i></small></div>
+        <div>Review Section</div>
         <div class="product-price">
           <div class="latest-price">₹{{productHelper.getPriceFormat(product.basePrice*((100-product.discount)/100))}}</div>
           <div class="actual-price" *ngIf="product.discount">
@@ -25,6 +26,13 @@
           <div class="discount" *ngIf="product.discount">
               <small><i>{{product.discount}}% off</i></small>
           </div>
+        </div>
+        <div>Delivery Information</div>
+        <br/>
+        <div class="user-deal">
+          <button class="btn" *ngIf="!product.quantity"> Out of Stock </button>
+          <button class="btn add-to-cart" *ngIf="product.quantity"> Add To Cart <i class="fas fa-shopping-cart"></i></button>
+          <button class="btn buy-now" *ngIf="product.quantity"> Buy Now <i class="fas fa-arrow-right"></i></button>
         </div>
       </div>
     </div>

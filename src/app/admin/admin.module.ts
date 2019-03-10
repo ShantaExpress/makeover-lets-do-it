@@ -14,7 +14,6 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
 import { AddressComponent } from './address/address.component';
-import { CategoryComponent } from './category/category.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -40,6 +39,11 @@ import { AddBannerComponent } from './banners/add-banner/add-banner.component';
 import { BannerListComponent } from './banners/banner-list/banner-list.component';
 import { TagsComponent } from './tags/tags.component';
 import { PageSettingsComponent } from './page-settings/page-settings.component';
+import { ProductSpecificationComponent } from './product-specification/product-specification.component';
+import { ProductSpecificationListComponent } from './product-specification/product-specification-list/product-specification-list.component';
+import { AddProductSpecificationComponent } from './product-specification/add-product-specification/add-product-specification.component';
+import { UpdateProductSpecificationComponent } from './product-specification/update-product-specification/update-product-specification.component';
+import { ProductFeaturesComponent } from './utility/product-features/product-features.component';
 
 @NgModule({
   imports: [
@@ -52,7 +56,6 @@ import { PageSettingsComponent } from './page-settings/page-settings.component';
   ],
   declarations: [
     AdminLoginComponent,
-    CategoryComponent,
     HeaderComponent,
     FooterComponent,
     HomeComponent,
@@ -82,7 +85,12 @@ import { PageSettingsComponent } from './page-settings/page-settings.component';
     AddBannerComponent,
     BannerListComponent,
     TagsComponent,
-    PageSettingsComponent
+    PageSettingsComponent,
+    ProductSpecificationComponent,
+    ProductSpecificationListComponent,
+    AddProductSpecificationComponent,
+    UpdateProductSpecificationComponent,
+    ProductFeaturesComponent
   ],
   providers:[AdminService,AdminGuard]
 })

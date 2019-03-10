@@ -58,7 +58,7 @@
       </tr>
     </thead>
     <tbody *ngIf="gridData">
-      <tr *ngFor="let item of gridData">
+      <tr *ngFor="let item of gridData" [ngClass]="{'selectedRow':item.selected}">
         <td class="min-cell">
           <label class="mar-0 pointer">
             <input class="hidden" type="checkbox" [(ngModel)]="item.selected" (change)="individualSelection(item.selected)"/>

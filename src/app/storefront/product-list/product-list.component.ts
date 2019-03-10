@@ -38,7 +38,6 @@ export class ProductListComponent implements OnInit {
 
   toggleFav(product){
     product.fav = !product.fav;
-    
   }
 
   fetchSubCategory(subCategory: string) {

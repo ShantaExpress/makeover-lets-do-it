@@ -34,6 +34,7 @@ export class EditProductComponent implements OnInit {
   categories:any=[];
   subCategories:any=[];
   sectionalCategories:any=[];
+  productFeatures:any=[];
   brands:any=[];
   tags:any=[];
   CRUDSuccess:String = '';
@@ -57,6 +58,19 @@ export class EditProductComponent implements OnInit {
     this.getCategories();
     this.getSectionalCategories();
     this.getTags();
+    this.getProductFeatures();
+  }
+
+  getProductFeatures(){
+    this.adminService.getAllPrivateData('productFeatures').subscribe(
+      data=>{
+        this.productFeatures = data['data'];
+        console.log('this.productFeatures : ', this.productFeatures);
+      },
+      error=>{
+        console.log('error: ' , error);
+      }
+    )
   }
 
   getProduct(productId){
@@ -70,17 +84,6 @@ export class EditProductComponent implements OnInit {
         console.log('error: ', error);
       }
     );
-  }
-
-  addNewSpecification(newSpecification){
-    console.log(' newSpecification : ', newSpecification);
-    if(newSpecification.trim().length){
-      this.product.specification.push({name:newSpecification.trim(),list:[],specProp:'',specPropValue:''});
-      this.newSpecification = '';
-    }
-  }
-  deleteSpecification(index){
-    this.product.specification.splice(index,1);
   }
   
   getCategories(){    
@@ -142,29 +145,10 @@ export class EditProductComponent implements OnInit {
     )
   }
   
-  addNewSpecificationProperty(spec){
-    console.log('in addNewSpecificationProperty: ', spec);
-    if(spec.specProp && spec.specProp.trim().length && spec.specPropValue && spec.specPropValue.trim().length){
-      if(spec.list.length==0){
-        spec.list.push({prop:spec.specProp.trim(),propValue:spec.specPropValue.trim()});
-        spec.specProp = spec.specPropValue = '';
-      } else {
-        var props = spec.list.map(prop=>{
-          return prop.prop;
-        });
-        if(props.indexOf(spec.specProp)==-1){
-          spec.list.push({prop:spec.specProp.trim(),propValue:spec.specPropValue.trim()});
-          spec.specProp = spec.specPropValue = '';
-        }
-      }
-    }
-    console.log('latest addNewSpecificationProperty: ', spec);
+  setFeatures(specifications:any){
+    this.product.specification = specifications;
+    console.log('this.product : ', this.product);
   }
-
-  deleteSpecificationProperty(list,index){
-    list.splice(index,1);
-  }
-
   
   setTags(){
     this.product.tags = this.tags.filter(item=>{return item.checked}).map(item=>{return item._id});
@@ -195,4 +179,16 @@ export class EditProductComponent implements OnInit {
       }
     );
   }
+  
+  selectSpecification() {
+    console.log('in selectSpecification : ', this.product.sectionalCategory_id);
+    let specification = this.productFeatures.find(item=>{
+      return item.sectionalCategory_id == this.product.sectionalCategory_id;
+    });
+    if(specification){
+      this.product.specification = JSON.parse(JSON.stringify(specification.specifications));
+    }
+    console.log('specification : ', specification);
+  }
+
 }

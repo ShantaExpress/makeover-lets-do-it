@@ -71,50 +71,6 @@
         [(ngModel)]="product.description" required></textarea>
       </div> 
     </div>
-    <div class="form-group">
-      <label for="specification">Product specification</label>
-      <div class="input-group">
-        <input type="text" class="form-control" id="newSpecification"
-        placeholder="Enter new Specification" name="newSpecification" 
-        [(ngModel)]="newSpecification"/>
-        <div class="input-group-append" >
-          <button class="btn btn-primary" (click)="addNewSpecification(newSpecification)">
-            <i class="fas fa-clipboard-list"></i> Add</button>
-        </div>
-      </div>
-      <div *ngFor="let spec of product.specification;let i = index">
-        <div class="card">
-          <div class="card-header"><b>{{spec.name}} </b>
-            <i class="floatR pointer fas fa-trash-alt text-danger" (click)="deleteSpecification(i)"></i>
-          </div>
-          <div class="card-body">
-
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-indent"></i></span>
-              </div>        
-              <input type="text" class="form-control" id="specName" [(ngModel)]="spec.specProp"
-              placeholder="Write Specification Property" name="specName"/>
-              <input type="text" class="form-control" id="specValue" [(ngModel)]="spec.specPropValue"
-              placeholder="Write specifictaion property value" name="specValue"/>
-              <div class="input-group-append" >
-                <button class="btn btn-success" 
-                (click)="addNewSpecificationProperty(spec)">
-                    <i class="fas fa-plus"></i>
-                </button>
-              </div>
-            </div>
-
-            <span *ngFor="let specProp of spec.list;let j = index" class="specPropHolder">
-              <label class="specProp">{{specProp.prop}}</label> : 
-              <strong>{{specProp.propValue}}</strong>
-              <i class="fas fa-times text-danger pointer close" (click)="deleteSpecificationProperty(spec.list,j)"></i>
-            </span>
-
-          </div>
-        </div>
-      </div>
-    </div>
     <hr/>
     <div class="form-group">
       <label for="manufacturer">Product manufacturer</label>
@@ -164,7 +120,7 @@
           </option>
         </select>
         <select class="form-control" id="category.sectionalCategory_id" name="category.sectionalCategory_id"
-          [(ngModel)]="product.sectionalCategory_id" required>
+          [(ngModel)]="product.sectionalCategory_id" required (change)="selectSpecification()">
           <option value="">--Choose SectionalCategory--</option>
           <option *ngFor="let x of sectionalCategories | filterSectionalCategory:product.subCategory_id" 
             [value]="x._id" >{{x.name}}
@@ -173,6 +129,13 @@
       </div>
     </div>
       
+    <div class="form-group" *ngIf="product.sectionalCategory_id">
+        <app-product-features
+          [specifications]="product.specification"
+          (emitFeatures)="setFeatures($event)"
+        ></app-product-features>
+    </div>
+
     <div class="form-group">
       <label for="image">Product brand</label>
       <select class="form-control" id="category.brand_id" name="category.brand_id"

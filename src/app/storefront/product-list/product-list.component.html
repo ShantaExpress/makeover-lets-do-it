@@ -7,13 +7,13 @@
 </div>
 <section class="container-fluid">
   <div class="row">
-      <aside class="col-3">
+      <aside class="col-md-3">
           Filters
       </aside>
-      <div class="col-9">
+      <div class="col-md-9">
           <div class="row">
                 <ng-container *ngFor="let product of productList">
-                  <div class="col-3">
+                  <div class="col-md-3">
                       <div class="product">
                           <div class="fav-box" (click)="toggleFav(product)">
                             <i *ngIf="product.fav" class="fas fa-heart"></i>

@@ -1,0 +1,19 @@
+<br/>
+<div class="container">
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/admin/productFeatures" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <i class="fas fa-box"></i> ProductFeature List
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link"  routerLink="/admin/productFeatures/add" routerLinkActive="active" >
+      <i class="fas fa-box-open"></i>Add Product Feature</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link not-active" routerLink="/admin/productFeatures/edit" routerLinkActive="active" >
+      <i class="fas fa-box-open"></i>Edit Product Feature</a>
+  </li>
+</ul>
+</div>
+<router-outlet></router-outlet>
