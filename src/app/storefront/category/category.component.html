@@ -1,7 +1,7 @@
 <div *ngIf="category && category.name">
     <div class="banner-top" 
-      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+category.imageName+')' }">
-      <!-- <img class="category-banner" src="http://localhost:3000/api/media/download/{{category.imageName}}"
+      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+category.imageName.split(',')[0]+')' }">
+      <!-- <img class="category-banner" src="http://localhost:3000/api/media/download/{{category.imageName.split(',')[0]}}"
           alt="{{category.name}}" /> -->
     </div>
 </div>
@@ -17,7 +17,7 @@
 <div *ngFor="let subCat of subCategories; let i = index">
     <div class="banner-top subCategoryBox"
         [ngClass]="{'right': (i%2 == 1)}"
-      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCat.imageName+')' }">
+      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCat.imageName.split(',')[0]+')' }">
       <div class="highlighter-box">
         <div class="text-node">
             <a routerLink="/store/shop/{{category.url}}{{subCat.url}}"

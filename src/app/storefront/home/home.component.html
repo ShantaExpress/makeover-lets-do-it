@@ -15,8 +15,8 @@
       [ngClass]="{'active' : j == 0}">
       <a routerLink="{{banner.link}}">
         <div class="banner_carousel banner-top" 
-          [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+banner.imageId+')'}"></div>
-        <!-- <img src="http://localhost:3000/api/media/download/{{banner.imageId}}"
+          [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+banner.imageId.split(',')[0]+')'}"></div>
+        <!-- <img src="http://localhost:3000/api/media/download/{{banner.imageId.split(',')[0]}}"
           alt="{{banner.title}}" /> -->
       </a>
       <div class="carousel-caption">

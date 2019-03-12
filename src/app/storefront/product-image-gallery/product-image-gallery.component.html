@@ -1,0 +1,15 @@
+<!-- <div *ngFor="let image of images">{{image}}</div> -->
+<div class="product-image-container">
+  <div class="images-iterator" *ngIf="images.length > 1" >
+    <div class="arrow up" (click)="selectImage(selectedImage==0?0:selectedImage-1)"><i class="fas fa-angle-up"></i></div>
+    <ng-container *ngFor="let image of images; let j = index">
+      <img [ngClass]="{'selected': selectedImage == j}" src="http://localhost:3000/api/media/download/{{image}}" (click)="selectImage(j)"/>
+    </ng-container>
+    <div class="arrow down" (click)="selectImage(selectedImage==images.length-1?images.length-1:selectedImage+1)"><i class="fas fa-angle-down"></i></div>
+  </div>
+  <div class="image-container" >
+    <ng-container *ngFor="let image of images; let i = index">
+      <img *ngIf="selectedImage === i" src="http://localhost:3000/api/media/download/{{image}}" />
+    </ng-container>
+  </div>
+</div>

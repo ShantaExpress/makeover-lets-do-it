@@ -1,6 +1,6 @@
 <div *ngIf="subCategory && subCategory.name">
     <div class="banner-top" 
-      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCategory.imageName+')' }">
+      [ngStyle]="{'background-image': 'url(http://localhost:3000/api/media/download/'+subCategory.imageName.split(',')[0]+')' }">
       <!-- <img class="subCategory-banner" src="http://localhost:3000/api/media/download/{{subCategory.imageName}}"
           alt="{{subCategory.name}}" /> -->
     </div>
@@ -11,7 +11,7 @@
             <div class="col-3">
                 <div class="product">
                     <div class="product-image">
-                        <img class="" src="http://localhost:3000/api/media/download/{{product.image_id}}"
+                        <img class="" src="http://localhost:3000/api/media/download/{{product.image_id.split(',')[0]}}"
                         alt="{{product.name}}" />
                     </div>
                     <div class="product-name">{{product.name}}</div>

@@ -3,8 +3,9 @@
   <div class="row" *ngIf="product.name">
     <div class="col-md-5">
       <div class="product-image-box">
-        <img src="http://localhost:3000/api/media/download/{{product.image_id}}"
-        alt="{{product.name}}" />
+        <product-image-gallery [images]="product.image_id.split(',')"></product-image-gallery>
+        <!-- <img src="http://localhost:3000/api/media/download/{{product.image_id.split(',')[0]}}"
+        alt="{{product.name}}" /> -->
         <div class="fav-box" (click)="toggleFav(product)">
           <i *ngIf="product.fav" class="fas fa-heart"></i>
           <i *ngIf="!product.fav" class="far fa-heart"></i>
