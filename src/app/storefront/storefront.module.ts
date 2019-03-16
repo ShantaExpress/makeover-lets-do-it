@@ -24,6 +24,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductImageGalleryComponent } from './product-image-gallery/product-image-gallery.component';
 import { ProductDetailedSpecificationComponent } from './product-detailed-specification/product-detailed-specification.component';
+import { ProductFilterComponent } from './utility/product-filter/product-filter.component';
+import { PriceRangeComponent } from './utility/price-range/price-range.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,7 @@ import { ProductDetailedSpecificationComponent } from './product-detailed-specif
   ],
   declarations: [ HeaderComponent, CarouselSetComponent, FooterComponent, HomeComponent,
                   NotFoundComponent, CartComponent, StoreBaseComponent, SubCategoryComponent,
-                  ProductListComponent, SigninComponent, SignupComponent, CategoryComponent, ProductDetailsComponent, ProductImageGalleryComponent, ProductDetailedSpecificationComponent],
+                  ProductListComponent, SigninComponent, SignupComponent, CategoryComponent, ProductDetailsComponent, ProductImageGalleryComponent, ProductDetailedSpecificationComponent, ProductFilterComponent, PriceRangeComponent],
   providers:[AdminService, StorefrontService, ProductHelperService]
 })
 export class StorefrontModule { }

@@ -8,7 +8,7 @@
 <section class="container-fluid">
   <div class="row">
       <aside class="col-md-3">
-          Filters
+        <product-filter></product-filter>
       </aside>
       <div class="col-md-9">
           <div class="row">
@@ -39,7 +39,7 @@
                           <div class="highlights">
                             <ng-container *ngFor="let specification of product.specification">
                               <ng-container *ngFor="let feature of specification.list">
-                                <div *ngIf="feature.highlight.toString()=='true'">
+                                <div *ngIf="feature.highlight && feature.highlight.toString()=='true'">
                                   <span class="featureProp">{{feature.prop}}</span> : {{feature.propValue}}
                                 </div>
                               </ng-container>

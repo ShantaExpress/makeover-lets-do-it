@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import { StorefrontService } from '../../services/storefront-service.service';
@@ -13,6 +13,8 @@ export class ProductListComponent implements OnInit {
 
   subCategory: any;
   productList: any = [];
+  filteredList: any = [];
+  filters:any = {};
 
   constructor(
     private title: Title,
@@ -56,11 +58,24 @@ export class ProductListComponent implements OnInit {
     this.storeService.getAllPublicData('Product', filter).subscribe(
       data => {
         this.productList = data['data'];
+        this.filteredList = this.getFilteredItems();
       },
       error => {
         console.log('error: ', error);
       }
     );
 
+  }
+
+  getFilteredItems() {
+    let list = this.productList;
+    // let keys = Object.keys(this.filters);
+    // let filterList = list.filter(function(item){
+    //   let unmatch = false;
+    //   for (let i = 0; i < keys.length; i++) {
+    //     if(item[keys])
+    //   }
+    // });
+    return list;
   }
 }
