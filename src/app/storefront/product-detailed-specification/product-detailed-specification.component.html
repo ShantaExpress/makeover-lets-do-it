@@ -1,0 +1,26 @@
+<div class="container">
+    <h3>Product Specification</h3>
+    <div id="accordion">
+      <div class="card" *ngFor="let spec of spefications;let i = index">
+        <div class="card-header" (click)="collapseShow(i)">
+          <a class="card-link">
+            {{spec.name}}
+            <span class="right">
+              <i [ngClass]="{'fa-minus' : spec.visible, 'fa-plus' : !spec.visible}" class="fas"></i>
+            </span>
+          </a>
+        </div>
+        <div id="collapse{{i}}" class="collapse" [ngClass]="{'show': spec.visible}" data-parent="#accordion">
+          <ul class="spec-list list-group list-group-flush">
+            <ng-container *ngFor="let feature of spec.list">
+              <li class="item list-group-item">
+                <label>{{feature.prop}}</label>
+                <span>{{feature.propValue}}</span>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<br/>

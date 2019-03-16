@@ -51,10 +51,10 @@
             <i [ngClass]="{'text-success fas fa-check-square':selectAll, 'far fa-square': !selectAll}"></i>
           </label>
         </th>
+        <th class="min-cell"><i class="fas fa-cog"></i></th>
         <ng-container *ngFor="let header of configuration">
           <th *ngIf="header.visible">{{header.display}}</th>
         </ng-container>
-        <th><i class="fas fa-cog"></i> Action</th>
       </tr>
     </thead>
     <tbody *ngIf="gridData">
@@ -64,6 +64,24 @@
             <input class="hidden" type="checkbox" [(ngModel)]="item.selected" (change)="individualSelection(item.selected)"/>
             <i [ngClass]="{'text-success fas fa-check-square':item.selected, 'far fa-square': !item.selected}"></i>
           </label>
+        </td>
+        <td class="edit-cell">
+          <span *ngIf="!item.isEditing">
+            <span class="text-primary pointer" (click)="editItem(item,true)">
+                <i class="fas fa-pencil-alt"></i>
+            </span>
+            &nbsp;&nbsp;
+            <span class="text-danger pointer" data-toggle="modal" (click)="deleteItem(item)"
+              data-target="#myModal">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+          </span>
+          <div *ngIf="item.isEditing" class="btn-group btn-group-sm" role="group" aria-label="">
+            <button type="button" class="btn btn-success" title="Update"
+            (click)="updateItem(item)"><i class="fas fa-sync"></i></button>
+            <button type="button" class="btn btn-secondary" title="Cancel"
+            (click)="editItem(item,false)"><i class="fas fa-ban"></i></button>
+          </div>
         </td>
         <ng-container *ngFor="let header of configuration">
           <td *ngIf="header.visible">
@@ -127,24 +145,6 @@
 
           </td>
         </ng-container>
-        <td>
-          <span *ngIf="!item.isEditing">
-            <span class="text-primary pointer" (click)="editItem(item,true)">
-                <i class="fas fa-pencil-alt"></i>
-            </span>
-            &nbsp;&nbsp;
-            <span class="text-danger pointer" data-toggle="modal" (click)="deleteItem(item)"
-              data-target="#myModal">
-              <i class="fas fa-trash-alt"></i>
-            </span>
-          </span>
-          <div *ngIf="item.isEditing" class="btn-group btn-group-sm" role="group" aria-label="">
-            <button type="button" class="btn btn-success" title="Update"
-            (click)="updateItem(item)"><i class="fas fa-sync"></i></button>
-            <button type="button" class="btn btn-secondary" title="Cancel"
-            (click)="editItem(item,false)"><i class="fas fa-ban"></i></button>
-          </div>
-        </td>
       </tr>
     </tbody>
   </table>

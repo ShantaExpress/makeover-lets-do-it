@@ -23,6 +23,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductImageGalleryComponent } from './product-image-gallery/product-image-gallery.component';
+import { ProductDetailedSpecificationComponent } from './product-detailed-specification/product-detailed-specification.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { ProductImageGalleryComponent } from './product-image-gallery/product-im
   ],
   declarations: [ HeaderComponent, CarouselSetComponent, FooterComponent, HomeComponent,
                   NotFoundComponent, CartComponent, StoreBaseComponent, SubCategoryComponent,
-                  ProductListComponent, SigninComponent, SignupComponent, CategoryComponent, ProductDetailsComponent, ProductImageGalleryComponent],
+                  ProductListComponent, SigninComponent, SignupComponent, CategoryComponent, ProductDetailsComponent, ProductImageGalleryComponent, ProductDetailedSpecificationComponent],
   providers:[AdminService, StorefrontService, ProductHelperService]
 })
 export class StorefrontModule { }
