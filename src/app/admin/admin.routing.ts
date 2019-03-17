@@ -32,6 +32,10 @@ import { ProductSpecificationComponent } from './product-specification/product-s
 import { ProductSpecificationListComponent } from './product-specification/product-specification-list/product-specification-list.component';
 import { AddProductSpecificationComponent } from './product-specification/add-product-specification/add-product-specification.component';
 import { UpdateProductSpecificationComponent } from './product-specification/update-product-specification/update-product-specification.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { AddProductFilterComponent } from './product-filter/add-product-filter/add-product-filter.component';
+import { UpdateProductFilterComponent } from './product-filter/update-product-filter/update-product-filter.component';
+import { ProductFilterListComponent } from './product-filter/product-filter-list/product-filter-list.component';
 
 const adminRoutes: Routes = [
     {
@@ -72,13 +76,22 @@ const adminRoutes: Routes = [
             { path: 'tags', component: TagsComponent},            
             { path: 'productFeatures', component: ProductSpecificationComponent,
                 children:[
-                // {path:'', redirectTo: 'list', pathMatch: 'full'},
-                {path:'',component:ProductSpecificationListComponent},
-                {path:'add',component:AddProductSpecificationComponent},
-                {path:'edit',component:UpdateProductSpecificationComponent},
-                {path:'edit/:id',component:UpdateProductSpecificationComponent}
+                    // {path:'', redirectTo: 'list', pathMatch: 'full'},
+                    {path:'',component:ProductSpecificationListComponent},
+                    {path:'add',component:AddProductSpecificationComponent},
+                    {path:'edit',component:UpdateProductSpecificationComponent},
+                    {path:'edit/:id',component:UpdateProductSpecificationComponent}
                 ]
             },
+            { path: 'productFilters', component: ProductFilterComponent,
+                children:[
+                    // {path:'', redirectTo: 'list', pathMatch: 'full'},
+                    {path:'',component:ProductFilterListComponent},
+                    {path:'add',component:AddProductFilterComponent},
+                    {path:'edit',component:UpdateProductFilterComponent},
+                    {path:'edit/:id',component:UpdateProductFilterComponent}
+                ]
+            }
         ]
     }
 ];

@@ -44,6 +44,10 @@ import { ProductSpecificationListComponent } from './product-specification/produ
 import { AddProductSpecificationComponent } from './product-specification/add-product-specification/add-product-specification.component';
 import { UpdateProductSpecificationComponent } from './product-specification/update-product-specification/update-product-specification.component';
 import { ProductFeaturesComponent } from './utility/product-features/product-features.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { AddProductFilterComponent } from './product-filter/add-product-filter/add-product-filter.component';
+import { UpdateProductFilterComponent } from './product-filter/update-product-filter/update-product-filter.component';
+import { ProductFilterListComponent } from './product-filter/product-filter-list/product-filter-list.component';
 
 @NgModule({
   imports: [
@@ -90,7 +94,11 @@ import { ProductFeaturesComponent } from './utility/product-features/product-fea
     ProductSpecificationListComponent,
     AddProductSpecificationComponent,
     UpdateProductSpecificationComponent,
-    ProductFeaturesComponent
+    ProductFeaturesComponent,
+    ProductFilterComponent,
+    AddProductFilterComponent,
+    UpdateProductFilterComponent,
+    ProductFilterListComponent
   ],
   providers:[AdminService,AdminGuard]
 })

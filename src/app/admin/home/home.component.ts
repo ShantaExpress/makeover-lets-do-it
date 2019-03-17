@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
     { name: 'Address', link: '/Address'},
     { name: 'Companies', link: '/Companies'},
     { name: 'Tags', link: '/tags'},
-    { name: 'ProductFeatures', link: '/productFeatures'}
+    { name: 'ProductFeatures', link: '/productFeatures'},
+    { name: 'ProductFilters', link: '/productFilters'}
   ]
 
   constructor(private title:Title) { }
