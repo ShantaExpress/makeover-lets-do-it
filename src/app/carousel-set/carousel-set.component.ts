@@ -17,8 +17,8 @@ export class CarouselSetComponent implements OnInit, AfterViewInit {
   disableNext: boolean = false;
   recordWidth: number = 260;
   shifted: number = 0;
-  @ViewChild('train') train;
-  @ViewChild('track') track;
+  @ViewChild('train', {static: false}) train;
+  @ViewChild('track', {static: false}) track;
 
   constructor(private store:StorefrontService, private router:Router) { }
 

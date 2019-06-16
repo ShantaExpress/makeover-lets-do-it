@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
     {field:'imageName',display:'Image Name', visible:true,editable:true}
   ];
   
-  @ViewChild(GridTableComponent)
+  @ViewChild(GridTableComponent, {static: false})
   private grid: GridTableComponent;
 
   constructor(private adminService: AdminService,private router:Router,private title:Title) { }

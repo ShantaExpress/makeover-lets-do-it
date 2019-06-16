@@ -37,3 +37,24 @@
 //         display: block;
 //     }
 // }
+
+.cartItem {
+    position: absolute;
+    color: orangered;
+    top: 0px;
+    font-size: 15px;
+    right: 0;
+    animation-name: shake;
+    animation-duration: 2s;
+    font-weight: bolder;
+}
+
+
+/* Standard syntax */
+@keyframes shake {
+    0%   {transform: rotate(45deg)}
+    25%  {transform: rotate(-30deg)}
+    50%  {transform: rotate(20deg)}
+    75%  {transform: rotate(-10deg)}
+    100% {transform: rotate(0deg)}
+}

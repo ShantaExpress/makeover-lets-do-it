@@ -32,8 +32,23 @@
     .product-image {
         height: 250px;
         overflow: hidden;
+        position: relative;
         img {
             width: 100%;
+        }
+        .fa-cart-plus {
+            position: absolute;
+            right: 0;
+            padding: 10px;
+            bottom: 0;
+            color: cornsilk;
+            background: coral;
+            border-radius: 50%;
+            &:hover {
+                right: 2px;
+                bottom: 2px;
+                box-shadow: 2px 2px 2px saddlebrown;
+            }
         }
     }
     .product-name {

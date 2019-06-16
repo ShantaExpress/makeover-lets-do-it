@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorefrontService } from '../../services/storefront-service.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,19 @@ import { StorefrontService } from '../../services/storefront-service.service';
 })
 export class HeaderComponent implements OnInit {
   headerCategories: any = [];
-  constructor(private storeService: StorefrontService) { }
-
+  constructor(private storeService: StorefrontService, private cart: CartService) { }
+  cartItem: number;
   ngOnInit() {
     this.getHeaders();
+    var self = this;
+    this.cartItem = this.cart.products.length;
+    this.cart.productAddedToCart.subscribe(flag=>{
+      console.log(flag);
+      this.cartItem = 0;
+      setTimeout(function(){
+        self.cartItem = self.cart.products.length;
+      });
+    });
   }
 
   getCategories(){

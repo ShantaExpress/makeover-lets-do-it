@@ -3,7 +3,8 @@
   <div class="container-fluid">
       <div class="track" #track>
         <div class="train" #train>
-          <div class="coaches" *ngFor="let product of set.records" [ngStyle]="{'width': recordWidth+'px'}">
+          <!-- <div class="coaches" *ngFor="let product of set.records" [ngStyle]="{'width': recordWidth+'px'}"> -->
+          <div class="coaches" *ngFor="let product of set.records" [style.width.px]="recordWidth">
             <img class="media" src="http://localhost:3000/api/media/download/{{product.image_id}}"
               alt="{{product.name}}" />
             <div class="information">

@@ -1,8 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -29,7 +27,7 @@ import { AddProductComponent } from './products/add-product/add-product.componen
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
-import { FileSelectDirective } from 'ng2-file-upload';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { GridTableComponent } from '../grid-table/grid-table.component';
 import { SectionalCategoryComponent } from './sectional-category/sectional-category.component';
@@ -48,15 +46,16 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { AddProductFilterComponent } from './product-filter/add-product-filter/add-product-filter.component';
 import { UpdateProductFilterComponent } from './product-filter/update-product-filter/update-product-filter.component';
 import { ProductFilterListComponent } from './product-filter/product-filter-list/product-filter-list.component';
-
+import { StoreModule, ReducerManager } from '@ngrx/store';
+import {reducers} from './store/reducers';
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
-    AdminRouting
+    AdminRouting,
+    FileUploadModule,
+    StoreModule.forRoot(reducers,{})
   ],
   declarations: [
     AdminLoginComponent,
@@ -84,7 +83,6 @@ import { ProductFilterListComponent } from './product-filter/product-filter-list
     SubCategoryFilterPipe,
     SectionalCategoryFilterPipe,
     BrandFilterPipe,
-    FileSelectDirective,
     BannersComponent,
     AddBannerComponent,
     BannerListComponent,
@@ -102,4 +100,8 @@ import { ProductFilterListComponent } from './product-filter/product-filter-list
   ],
   providers:[AdminService,AdminGuard]
 })
-export class AdminModule { }
+export class AdminModule {
+  constructor() {
+    console.log('in AdminModule');
+  }
+}

@@ -23,7 +23,7 @@ import { CategoryComponent } from './category/category.component';
 
 const storeRoutes: Routes = [
     {
-        path: 'store',
+        path: '',
         component: StoreBaseComponent,
         children: [
             { path: '', component: HomeComponent },

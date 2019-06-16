@@ -142,6 +142,11 @@ export class StorefrontService {
         return this.http.get(this.publicUrl+'get/'+api+queryString,this.gethttpHeaders(false));
     }
 
+    filterPublicData (api:String, filterObj?:any) {
+        let body = JSON.stringify(filterObj || {});
+        return this.http.post(this.publicUrl+'post/'+api, body, this.gethttpHeaders(false));
+    }
+
     getPageSettings(page:String){
         return this.http.get(this.publicUrl+'settings/'+page,this.gethttpHeaders(false));
     }

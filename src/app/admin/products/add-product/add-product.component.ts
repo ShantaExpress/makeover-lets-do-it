@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
   CRUDSuccess:String = '';
   error:String='';
 
-  @ViewChild(GridTableComponent)
+  @ViewChild(GridTableComponent, {static:false})
   private grid: GridTableComponent;
   constructor(private adminService: AdminService,private router:Router,private title:Title) {
     this.title.setTitle('Admin: Add Product');

@@ -28,7 +28,7 @@ export class BrandsComponent implements OnInit {
     {field:'subCategories',display:'Sub Categories', type:'Array',
      visible:true,editable:true,parentApi:'subCategory',parentField:'name'}
   ];
-  @ViewChild(GridTableComponent)
+  @ViewChild(GridTableComponent, {static:false})
   private grid: GridTableComponent;
 
   constructor(private adminService: AdminService,private router:Router,private title:Title) {

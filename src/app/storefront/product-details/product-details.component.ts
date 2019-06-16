@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import { StorefrontService } from '../../services/storefront-service.service';
 import { ProductHelperService } from '../../services/product-helper.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     private title: Title,
     private storeService: StorefrontService,
     private productHelper: ProductHelperService,
+    private cart: CartService,
     private router:Router,
     private route: ActivatedRoute
   ) {}

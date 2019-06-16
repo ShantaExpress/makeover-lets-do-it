@@ -17,6 +17,7 @@ import {saveAs} from 'file-saver';
 export class MediaComponent implements OnInit {
   files:any=[];
   CRUDSuccess:any="";
+  error:any='';
   uploader:FileUploader = new FileUploader({
     url:this.getURL(),
     headers: [{

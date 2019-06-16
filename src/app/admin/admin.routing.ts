@@ -39,7 +39,7 @@ import { ProductFilterListComponent } from './product-filter/product-filter-list
 
 const adminRoutes: Routes = [
     {
-        path: 'admin',
+        path: '',
         component: AdminBaseComponent,
         children: [
             { path: '', component: HomeComponent },

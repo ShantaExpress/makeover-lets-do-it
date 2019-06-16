@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Title } from '@angular/platform-browser';
 import { StorefrontService } from '../../services/storefront-service.service';
 import { ProductHelperService } from '../../services/product-helper.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +18,7 @@ export class ProductListComponent implements OnInit {
   filters:any = {};
 
   constructor(
+    private cart: CartService,
     private title: Title,
     private storeService: StorefrontService,
     private productHelper: ProductHelperService,
@@ -51,14 +53,16 @@ export class ProductListComponent implements OnInit {
 
   getProductList() {
     var productType = this.route.snapshot.params['productType'];
-    let filter = {subCategory_id: this.subCategory._id};
+    let filter = {
+      ...this.filters,
+      subCategory_id: this.subCategory._id
+    };
     if(productType){
       filter['sectionalCategory_id'] = this.storeService.getProductInfo('SectionalCategory','identifier',productType, '_id');
     }
-    this.storeService.getAllPublicData('Product', filter).subscribe(
+    this.storeService.filterPublicData('Product', filter).subscribe(
       data => {
         this.productList = data['data'];
-        this.filteredList = this.getFilteredItems();
       },
       error => {
         console.log('error: ', error);
@@ -67,15 +71,15 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  getFilteredItems() {
-    let list = this.productList;
-    // let keys = Object.keys(this.filters);
-    // let filterList = list.filter(function(item){
-    //   let unmatch = false;
-    //   for (let i = 0; i < keys.length; i++) {
-    //     if(item[keys])
-    //   }
-    // });
-    return list;
+  addPriceFilter(max:number) {
+    this.filters.basePrice = {
+      $lt : max
+    }
+    this.getProductList();
+  }
+
+  addToCart(product) {
+    // this.cart.(product);
+    this.cart.addProductToCart(product);
   }
 }

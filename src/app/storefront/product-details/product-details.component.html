@@ -31,7 +31,7 @@
         <div class="highlights">
           <ng-container *ngFor="let specification of product.specification">
             <ng-container *ngFor="let feature of specification.list">
-              <div *ngIf="feature.highlight.toString()=='true'">
+              <div *ngIf="feature.highlight?.toString()=='true'">
                 <span class="featureProp">{{feature.prop}}</span> : {{feature.propValue}}
               </div>
             </ng-container>
@@ -42,7 +42,7 @@
         <div class="user-deal">
           <button class="btn" *ngIf="!product.quantity"> Out of Stock </button>
           <button class="btn btn-primary" *ngIf="!product.quantity"> Notify Me </button>
-          <button class="btn add-to-cart" *ngIf="product.quantity"> Add To Cart <i class="fas fa-shopping-cart"></i></button>
+          <button class="btn add-to-cart" *ngIf="product.quantity" (click)="cart.addProductToCart(product)"> Add To Cart <i class="fas fa-shopping-cart"></i></button>
           <button class="btn buy-now" *ngIf="product.quantity"> Buy Now <i class="fas fa-arrow-right"></i></button>
         </div>
       </div>

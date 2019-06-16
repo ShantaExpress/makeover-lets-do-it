@@ -25,7 +25,7 @@ export class TagsComponent implements OnInit {
     {field:'isEnabled',display:'IsEnabled', visible:true,editable:true}
   ];
   
-  @ViewChild(GridTableComponent)
+  @ViewChild(GridTableComponent, {static:false})
   private grid: GridTableComponent;
 
   constructor(private adminService: AdminService,private router:Router,private title:Title) { }

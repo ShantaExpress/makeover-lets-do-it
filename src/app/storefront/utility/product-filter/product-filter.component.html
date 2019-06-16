@@ -2,3 +2,12 @@
 <price-range [min]="min" [max]="max" (maxUpdated)="maxUpdated($event)"></price-range>
 
 <div>updatedMaxPrice : {{updatedMaxPrice}}</div>
+<ng-container *ngIf="filterKeys">
+    <div *ngFor="let spec of filterKeys">
+        <div>{{spec}}</div>
+        <ul>
+            <li *ngFor="let value of filterList[spec]">{{value}}</li>
+        </ul>
+        <hr/>
+    </div>
+</ng-container>

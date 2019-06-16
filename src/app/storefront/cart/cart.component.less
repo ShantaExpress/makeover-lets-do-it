@@ -1,0 +1,51 @@
+.list-group-item {
+    display: flex;
+}
+.product-image-box {
+    width: 10%;
+    height: auto;
+    img {
+        width: 100%;
+    }
+}
+
+.description {
+    padding-left: 50px;
+    flex-grow: 1;
+}
+
+
+.product-price {
+    display: flex;
+    &>*{
+        margin: 10px 10px 10px 0;
+    }
+    .actual-price {
+        text-decoration: line-through;
+        color: grey;
+    }
+    .discount{
+        color: green;
+    }
+}
+
+.count-group {
+    width: auto;
+    background: darkorange;
+    border: 1px solid darkorange;
+    .fa-minus, .fa-plus {
+        padding: 0 5px;
+        cursor: pointer;
+        color: white;
+        &:hover {
+            color: black;
+        }
+    }
+    .count-box {
+        padding: 0 10px;
+        background: white;
+    }
+    .fa-plus {
+
+    }
+}
