@@ -4,9 +4,15 @@
 <div>updatedMaxPrice : {{updatedMaxPrice}}</div>
 <ng-container *ngIf="filterKeys">
     <div *ngFor="let spec of filterKeys">
-        <div>{{spec}}</div>
-        <ul>
-            <li *ngFor="let value of filterList[spec]">{{value}}</li>
+        <div><strong>{{spec}}</strong></div>
+        <ul >
+            <li *ngFor="let value of filterList[spec]">
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="checkbox" class="form-check-input" value="">{{value}}
+                    </label>
+                </div>
+            </li>
         </ul>
         <hr/>
     </div>
